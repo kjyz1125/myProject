@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "=//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.distancecalc.service.mapper.BBSMapper">
+	
+	<select id="getBBS" resultType="HashMap">
+		select idx, title, count from bbs where useyn = 'Y' order by idx desc limit 10
+	</select>
+	
+	<select id="getBBSInfo" parameterType="int" resultType="HashMap">
+		select idx, title, CONVERT(contents USING utf8) as contents, writer from bbs where idx = #{idx}
+	</select>
+	
+	<update id="insertBBS" parameterType="HashMap">
+		insert into bbs (title, contents, writer, regdate, useyn) values (#{title}, #{contents}, 'master', NOW(), 'Y')
+	</update>
+	
+	<update id="deleteBBS" parameterType="HashMap">
+		update bbs set useyn = 'N' where idx = #{idx} 
+	</update>
+	
+	<update id="updateBBS" parameterType="HashMap">
+		update bbs set 
+			title = #{title}
+		   ,contents = #{contents}
+		   ,moddate = NOW()
+		where idx = #{idx} 
+	</update>
+	
+	<update id="updateBBSCount" parameterType="int">
+		update bbs set 
+			count = count + 1
+		where idx = #{idx} 
+	</update>
+	
+</mapper>
