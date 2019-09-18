@@ -1,4 +1,4 @@
-package com.distancecalc.distancecalc;
+package com.distancecalc.controller;
 
 import java.text.DateFormat;
 import java.util.ArrayList;

@@ -93,5 +93,47 @@ $(function() {
 			return;
 		}
 	});
+	
+	$("#search").click(function(e){
+		e.preventDefault();
+		
+		var param = "/bbs?keyword=" + $("#keyword").val();
+		param += "&searchType=" + $('#searchType').val();
+
+		location.href = param;
+	});
 });
 
+function fn_prev(page, range, rangeSize) {
+
+	var page = ((range - 2) * rangeSize) + 1;
+	var range = range - 1;	
+	var url = "/bbs";
+
+	url = url + "?page=" + page;
+	url = url + "&range=" + range;
+
+	location.href = url;
+}
+
+function fn_pagination(page, range, rangeSize, searchType, keyword) {
+	
+	var url = "/bbs";
+	
+	url = url + "?page=" + page;
+	url = url + "&range=" + range;
+
+	location.href = url;	
+}
+
+function fn_next(page, range, rangeSize) {
+	
+	var page = parseInt((range * rangeSize)) + 1;
+	var range = parseInt(range) + 1;
+	var url = "/bbs";
+
+	url = url + "?page=" + page;
+	url = url + "&range=" + range;
+
+	location.href = url;
+}

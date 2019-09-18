@@ -8,6 +8,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.distancecalc.common.Pagination;
+import com.distancecalc.common.Search;
 import com.distancecalc.service.*;
 import com.distancecalc.service.mapper.BBSMapper;
 import com.distancecalc.service.mapper.MainMapper;
@@ -19,12 +21,13 @@ public class BBSServiceImpl implements BBSService {
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public ArrayList<HashMap<String, Object>> getBBS() {
+	public ArrayList<HashMap<String, Object>> getBBS(Pagination pagination) {
+		
 		ArrayList<HashMap<String, Object>> list = new ArrayList<>();		
 		
 		BBSMapper bbsMapper = sqlSession.getMapper(BBSMapper.class);
 		
-		list.addAll(bbsMapper.getBBS());
+		list.addAll(bbsMapper.getBBS(pagination));
 		
 		return list;
 	}
@@ -70,6 +73,14 @@ public class BBSServiceImpl implements BBSService {
 		BBSMapper bbsMapper = sqlSession.getMapper(BBSMapper.class);
 		
 		bbsMapper.updateBBSCount(idx);
+	}
+
+	@Override
+	public int getBBSCnt(Search search) {
+		
+		BBSMapper bbsMapper = sqlSession.getMapper(BBSMapper.class);
+		
+		return bbsMapper.getBBSCnt(search);
 	}
 
 }

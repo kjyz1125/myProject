@@ -3,11 +3,49 @@
 <mapper namespace="com.distancecalc.service.mapper.BBSMapper">
 	
 	<select id="getBBS" resultType="HashMap">
-		select idx, title, count from bbs where useyn = 'Y' order by idx desc limit 10
+		select 
+			idx
+		   ,title
+		   ,count
+		   ,writer
+		from bbs where 
+			useyn = 'Y'
+
+		<if test="searchType=='title' and keyword != null and keyword != '' ">
+			and title like concat('%', #{keyword}, '%')
+		</if>
+		<if test="searchType=='contents' and keyword != null and keyword != '' ">
+			and contents like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="searchType=='writer' and keyword != null and keyword != '' ">
+			and writer like CONCAT('%', #{keyword}, '%')
+		</if>	
+		
+		 order by idx desc 
+		 limit #{startList}, #{listSize}
 	</select>
 	
 	<select id="getBBSInfo" parameterType="int" resultType="HashMap">
 		select idx, title, CONVERT(contents USING utf8) as contents, writer from bbs where idx = #{idx}
+	</select>
+	
+	<select id="getBBSCnt" resultType="int">
+		select
+			count(*) as listCnt
+		from
+			bbs
+			where useyn = 'Y'
+		<if test="keyword != null and keyword != '' ">
+				<if test="searchType=='title'">
+					and title like concat('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='contents'">
+					and contents like concat('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='writer'">
+					and writer like concat('%', #{keyword}, '%')
+				</if>
+	      </if>
 	</select>
 	
 	<update id="insertBBS" parameterType="HashMap">

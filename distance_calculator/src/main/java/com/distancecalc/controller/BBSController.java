@@ -1,4 +1,4 @@
-package com.distancecalc.distancecalc;
+package com.distancecalc.controller;
 
 
 import java.util.ArrayList;
@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.distancecalc.common.Pagination;
+import com.distancecalc.common.Search;
 import com.distancecalc.service.BBSService;
 
 
@@ -36,12 +38,29 @@ public class BBSController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/bbs", method = RequestMethod.GET)
-	public String bbs(Model model) {
+	public String bbs(
+			 @RequestParam(required = false, defaultValue = "1") int page
+			,@RequestParam(required = false, defaultValue = "1") int range
+			,@RequestParam(required = false, defaultValue = "title") String searchType
+			,@RequestParam(required = false) String keyword
+			,Model model) 
+	{
 		
 		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
 		
-		list.addAll(bbsService.getBBS());
+		Search search = new Search();
+
+		search.setSearchType(searchType);
+
+		search.setKeyword(keyword);
 		
+		int listCnt = bbsService.getBBSCnt(search);
+		
+		search.pageInfo(page, range, listCnt);
+		
+		list.addAll(bbsService.getBBS(search));
+		
+		model.addAttribute("pagination", search);
 		model.addAttribute("data", list);
 		
 		return "bbs/bbs";
