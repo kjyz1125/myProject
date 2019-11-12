@@ -78,9 +78,9 @@ $(function() {
 		        success: function (result) {
 		            if(result == "SUCCESS"){
 		            	alert("성공");
-		            	window.location.href = "/bbs";
+		            	window.location.href = "/bbs/"+$("input[name=idx]").val();
 		            }else{
-		            	alert("실");
+		            	alert("실패");
 		            	window.location.href = "/bbs";
 		            }
 		            

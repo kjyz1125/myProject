@@ -33,20 +33,18 @@ public class MainController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main(Locale locale, Model model) {
 		
-		System.out.println("Hello Gradle!!!!!!!!!!!!!!!!!!!!!");
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		System.out.println(formattedDate);
 		
 		return "main";
 	}
 	
 	@RequestMapping(value = "/dc", method = RequestMethod.GET)
 	public String distance_calculator(Locale locale, Model model) {
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		
 		return "dc";
 	}

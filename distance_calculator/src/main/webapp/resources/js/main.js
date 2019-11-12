@@ -8,6 +8,8 @@ $(function() {
 			location.href = "http://localhost:8000/api/v1/members";
 		}else if(idx == 'github'){
 			location.href = "https://github.com/kjyz1125";
+		}else if(idx == 'jenkins'){
+			location.href = "http://52.79.79.61:8080";
 		}else{
 			location.href="/"+idx;
 		}
