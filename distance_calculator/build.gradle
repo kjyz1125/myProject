@@ -12,6 +12,10 @@ plugins {
 }
 
 apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
 
 repositories {
     mavenCentral()
@@ -67,6 +71,10 @@ group = 'com.distancecalc'
 version = '1.0.0-BUILD-SNAPSHOT'
 description = 'distance_calculator'
 sourceCompatibility = '1.8'
+
+war { 
+	baseName = 'ROOT' 
+}
 
 publishing {
     publications {
