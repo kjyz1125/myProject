@@ -40,6 +40,8 @@ public class MainController {
 		
 		System.out.println(formattedDate);
 		
+		logger.debug("hi");
+		
 		return "main";
 	}
 	
