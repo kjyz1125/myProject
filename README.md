@@ -1,2 +1,5 @@
 # myProject
-my project
+
+based java, spring, mybatis, jsp
+
+
