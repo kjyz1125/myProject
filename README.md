@@ -1,2 +1,3 @@
 # myProject
-my project
+test my project with java
+
