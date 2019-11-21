@@ -1,3 +1,5 @@
-# test my project with java
+# myProject
+
+based java, spring, mybatis, jsp
 
 
