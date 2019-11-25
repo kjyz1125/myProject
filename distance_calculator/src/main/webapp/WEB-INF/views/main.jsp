@@ -23,7 +23,7 @@ NOW MAINTENANCE.
 		<div class="menu" data="bbs" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
 			<span style="display:table-cell;text-align:center;vertical-align:middle;">bbs</span>
 		</div>
-		<div class="menu" data="dc" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
+<!-- 		<div class="menu" data="dc" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
 			<span style="display:table-cell;text-align:center;vertical-align:middle;">DC</span>
 		</div>
 		<div class="menu" data="django-api" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
@@ -34,16 +34,16 @@ NOW MAINTENANCE.
 		</div>
 		<div class="menu" data="django-api" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
 			<span style="display:table-cell;text-align:center;vertical-align:middle;">flask-api</span>
-		</div>
-		<div class="menu" data="django-api" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
+		</div> -->
+		<div class="menu" data="DevOps" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
 			<span style="display:table-cell;text-align:center;vertical-align:middle;">DevOps</span>
 		</div>
 		<div class="menu" data="github" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
 			<span style="display:table-cell;text-align:center;vertical-align:middle;">github</span>
 		</div>
-		<div class="menu" data="django-api" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
+<!-- 		<div class="menu" data="django-api" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
 			<span style="display:table-cell;text-align:center;vertical-align:middle;">template</span>
-		</div>
+		</div> -->
 		<div class="menu" data="jenkins" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
 			<span style="display:table-cell;text-align:center;vertical-align:middle;">jenkins</span>
 		</div>

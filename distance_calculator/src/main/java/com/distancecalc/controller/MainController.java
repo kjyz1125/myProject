@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,16 +34,7 @@ public class MainController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main(Locale locale, Model model) {
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		System.out.println(formattedDate);
-		
-		logger.debug("hi");
-		
+
 		return "main";
 	}
 	
@@ -49,6 +42,14 @@ public class MainController {
 	public String distance_calculator(Locale locale, Model model) {
 		
 		return "dc";
+	}
+	
+	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	public String error(HttpServletResponse res, Model model) {
+		
+		res.setStatus(HttpServletResponse.SC_OK);
+		
+		return "common/error404";
 	}
 	
 }
