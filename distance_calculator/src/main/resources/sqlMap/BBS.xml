@@ -10,16 +10,17 @@
 		   ,writer
 		from bbs where 
 			useyn = 'Y'
+			and category = #{category}
 
 		<if test="searchType=='title' and keyword != null and keyword != '' ">
 			and title like concat('%', #{keyword}, '%')
 		</if>
 		<if test="searchType=='contents' and keyword != null and keyword != '' ">
-			and contents like CONCAT('%', #{keyword}, '%')
+			and contents like concat('%', #{keyword}, '%')
 		</if>
 		<if test="searchType=='writer' and keyword != null and keyword != '' ">
-			and writer like CONCAT('%', #{keyword}, '%')
-		</if>	
+			and writer like concat('%', #{keyword}, '%')
+		</if>
 		
 		 order by idx desc 
 		 limit #{startList}, #{listSize}
@@ -35,6 +36,8 @@
 		from
 			bbs
 			where useyn = 'Y'
+			and category = #{category}
+			
 		<if test="keyword != null and keyword != '' ">
 				<if test="searchType=='title'">
 					and title like concat('%', #{keyword}, '%')

@@ -3,7 +3,8 @@ package com.distancecalc.common;
 public class Search extends Pagination{
 
 	private String searchType;
-	private String keyword;	
+	private String keyword;
+	private String category;
 
 	public String getSearchType() {
 		return searchType;
@@ -19,6 +20,14 @@ public class Search extends Pagination{
 	
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 }
 

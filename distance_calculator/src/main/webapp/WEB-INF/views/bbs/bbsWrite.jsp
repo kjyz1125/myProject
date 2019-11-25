@@ -6,7 +6,7 @@
 <script type="text/javascript" src="/resources/js/bbs.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>BBS Write</title>
+<title>${title} - eljamdev</title>
 </head>
 <body style="width:100%; height:100%;">
 	<div id="" style="width:80%; margin:0 auto;">

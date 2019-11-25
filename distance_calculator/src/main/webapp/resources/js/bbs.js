@@ -15,10 +15,10 @@ $(function() {
 		        success: function (result) {
 		        	if(result == "SUCCESS"){
 		            	alert("성공");
-		            	window.location.href = "/bbs";
+		            	window.location.href = location.pathname;
 		            }else{
 		            	alert("실패");
-		            	window.location.href = "/bbs";
+		            	window.location.href = location.pathname;
 		            }
 		        },
 		        error: function(XMLHttpResponse){
@@ -46,10 +46,10 @@ $(function() {
 		        success: function (result) {
 		            if(result == "SUCCESS"){
 		            	alert("성공");
-		            	window.location.href = "/bbs";
+		            	window.location.href = location.pathname;
 		            }else{
 		            	alert("실");
-		            	window.location.href = "/bbs";
+		            	window.location.href = location.pathname;
 		            }
 		            
 		        },
@@ -78,10 +78,10 @@ $(function() {
 		        success: function (result) {
 		            if(result == "SUCCESS"){
 		            	alert("성공");
-		            	window.location.href = "/bbs/"+$("input[name=idx]").val();
+		            	window.location.href = location.pathname + "/" +$("input[name=idx]").val();
 		            }else{
 		            	alert("실패");
-		            	window.location.href = "/bbs";
+		            	window.location.href = location.pathname;
 		            }
 		            
 		        },
@@ -97,7 +97,8 @@ $(function() {
 	$("#search").click(function(e){
 		e.preventDefault();
 		
-		var param = "/bbs?keyword=" + $("#keyword").val();
+		var param = location.pathname;
+		param += "?keyword=" + $("#keyword").val();
 		param += "&searchType=" + $('#searchType').val();
 
 		location.href = param;
@@ -108,7 +109,7 @@ function fn_prev(page, range, rangeSize) {
 
 	var page = ((range - 2) * rangeSize) + 1;
 	var range = range - 1;	
-	var url = "/bbs";
+	var url = location.pathname;
 
 	url = url + "?page=" + page;
 	url = url + "&range=" + range;
@@ -118,7 +119,7 @@ function fn_prev(page, range, rangeSize) {
 
 function fn_pagination(page, range, rangeSize, searchType, keyword) {
 	
-	var url = "/bbs";
+	var url = location.pathname;
 	
 	url = url + "?page=" + page;
 	url = url + "&range=" + range;
@@ -130,7 +131,7 @@ function fn_next(page, range, rangeSize) {
 	
 	var page = parseInt((range * rangeSize)) + 1;
 	var range = parseInt(range) + 1;
-	var url = "/bbs";
+	var url = location.pathname;
 
 	url = url + "?page=" + page;
 	url = url + "&range=" + range;

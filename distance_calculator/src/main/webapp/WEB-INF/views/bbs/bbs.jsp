@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!--<%@include file="../main.jsp"%> -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BBS</title>
+<title>${title} - eljamdev</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <script type="text/javascript" src="/resources/js-lib/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="/resources/js/bbs.js"></script>
@@ -24,9 +23,9 @@
 	<br/>
 	<div style="width:80%; height:100%; margin:0 auto;">	
 		<c:forEach var="data" items="${data}" varStatus="status">
-			<div style="display:inline-block;width:10%;"><span style="cursor:pointer;" onclick="location.href='/bbs/${data.idx}'"><c:out value="${data.idx}"/></span></div>
-			<div style="display:inline-block;width:58%;"><span style="cursor:pointer;" onclick="location.href='/bbs/${data.idx}'"><c:out value="${data.title}"/></span></div>
-			<div style="display:inline-block;width:19%;"><span style="cursor:pointer;" onclick="location.href='/bbs/${data.idx}'"><c:out value="${data.writer}"/></span></div>
+			<div style="display:inline-block;width:10%;"><span style="cursor:pointer;" onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${data.idx}"/></span></div>
+			<div style="display:inline-block;width:58%;"><span style="cursor:pointer;" onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${data.title}"/></span></div>
+			<div style="display:inline-block;width:19%;"><span style="cursor:pointer;" onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${data.writer}"/></span></div>
 			<div style="display:inline-block;width:10%"><c:out value="${data.count}"/></div>
 		</c:forEach>
 	</div>

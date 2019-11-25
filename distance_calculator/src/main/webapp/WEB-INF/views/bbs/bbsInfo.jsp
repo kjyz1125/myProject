@@ -6,7 +6,7 @@
 <script type="text/javascript" src="/resources/js/bbs.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>BBS info</title>
+<title>${title} - eljamdev</title>
 </head>
 <body style="width:100%; height:100%;">
 	<div style="width:80%; height:10%; margin:0 auto; border:1px solid black;">
@@ -16,12 +16,12 @@
 	<div style="width:80%; height:10%; margin:0 auto; border:1px solid black;">
 		${data.contents}
 	</div>
-	<div style="width:80%; height:100%; margin:0 auto;">
+<%-- 	<div style="width:80%; height:100%; margin:0 auto;">
 		<div id="delete" style="border:1px solid black;cursor:pointer;display:inline-block;float:right;width:10%">삭제</div>
 	</div>
 	<div style="width:80%; height:100%; margin:0 auto;">
 		<div onclick="javascript:location.href='/bbs/${data.idx}/update'" style="border:1px solid black;cursor:pointer;display:inline-block;float:right;width:10%">수정</div>
-	</div>
+	</div> --%>
 	<div style="display:none;">
 		${data.writer}
 	</div>
