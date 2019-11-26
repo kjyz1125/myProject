@@ -33,6 +33,8 @@ public class BBSController {
 	private static final Logger logger = LoggerFactory.getLogger(BBSController.class);
 	private static final String SUCCESS = "SUCCESS";
 	private static final String FAILED = "FAILED";
+	private static final String BBS_CATEGORY = "D";
+	private static final String DEVOPS_CATEGORY = "D";
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -48,13 +50,10 @@ public class BBSController {
 	{
 		
 		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
-		
 		Search search = new Search();
 
 		search.setSearchType(searchType);
-
 		search.setKeyword(keyword);
-		
 		search.setCategory(category);
 		
 		int listCnt = bbsService.getBBSCnt(search);
@@ -99,6 +98,8 @@ public class BBSController {
 	@ResponseBody
 	@RequestMapping(value = "/bbs/write.do", method = RequestMethod.POST)
 	public String bbsWriteDo(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		map.put("category", BBS_CATEGORY);
 		
 		int result = bbsService.insertBBS(map);
 		
@@ -208,6 +209,8 @@ public class BBSController {
 	@ResponseBody
 	@RequestMapping(value = "/devOps/write.do", method = RequestMethod.POST)
 	public String devOpsWriteDo(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		map.put("category", DEVOPS_CATEGORY);
 		
 		int result = bbsService.insertBBS(map);
 		

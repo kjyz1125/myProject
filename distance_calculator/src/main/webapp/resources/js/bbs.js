@@ -15,10 +15,10 @@ $(function() {
 		        success: function (result) {
 		        	if(result == "SUCCESS"){
 		            	alert("성공");
-		            	window.location.href = location.pathname;
+		            	window.location.href = "/"+location.pathname.split("/")[1];
 		            }else{
 		            	alert("실패");
-		            	window.location.href = location.pathname;
+		            	window.location.href = "/"+location.pathname.split("/")[1];
 		            }
 		        },
 		        error: function(XMLHttpResponse){
@@ -46,10 +46,10 @@ $(function() {
 		        success: function (result) {
 		            if(result == "SUCCESS"){
 		            	alert("성공");
-		            	window.location.href = location.pathname;
+		            	window.location.href = "/"+location.pathname.split("/")[1]
 		            }else{
 		            	alert("실");
-		            	window.location.href = location.pathname;
+		            	window.location.href = "/"+location.pathname.split("/")[1]
 		            }
 		            
 		        },

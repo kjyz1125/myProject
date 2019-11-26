@@ -13,7 +13,7 @@
 <script type="text/javascript" src="/resources/js/main.js"></script>
 <div style="width:100%; height:100%;background-color:black;">
 <h1 style="text-align:center;font-size:xx-large; color:white;">
-NOW MAINTENANCE.
+NOW MAINTENANCE
 </h1>
 </br>
 	<div style="margin:0 auto; width:80%; height:10%; color:white;">
