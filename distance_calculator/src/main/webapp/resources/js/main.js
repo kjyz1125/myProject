@@ -10,9 +10,10 @@ $(function() {
 			window.open("https://github.com/kjyz1125","_blank");
 		}else if(idx == 'jenkins'){
 			window.open("http://52.79.79.61:8080","_blank");
+		}else if(idx == 'login'){
+			return;
 		}else{
 			location.href="/"+idx;
 		}
-		
 	});
 });

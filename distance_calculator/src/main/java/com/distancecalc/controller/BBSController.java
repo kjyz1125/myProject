@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.distancecalc.common.FinalStringData;
 import com.distancecalc.common.Pagination;
+import com.distancecalc.common.PropertiesConfiguration;
 import com.distancecalc.common.Search;
 import com.distancecalc.service.BBSService;
 
@@ -31,11 +33,7 @@ public class BBSController {
 	private BBSService bbsService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(BBSController.class);
-	private static final String SUCCESS = "SUCCESS";
-	private static final String FAILED = "FAILED";
-	private static final String BBS_CATEGORY = "D";
-	private static final String DEVOPS_CATEGORY = "D";
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -99,11 +97,11 @@ public class BBSController {
 	@RequestMapping(value = "/bbs/write.do", method = RequestMethod.POST)
 	public String bbsWriteDo(@RequestParam HashMap<String, Object> map, Model model) {
 		
-		map.put("category", BBS_CATEGORY);
+		map.put("category", FinalStringData.BBS_CATEGORY);
 		
 		int result = bbsService.insertBBS(map);
 		
-		String data = result > 0 ? SUCCESS:FAILED;
+		String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
 		
 		return data;
 	}
@@ -114,7 +112,7 @@ public class BBSController {
 
 		int result = bbsService.deleteBBS(idx);
 		
-		String data = result > 0 ? SUCCESS:FAILED;
+		String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
 		
 		return data;
 	}
@@ -139,7 +137,7 @@ public class BBSController {
 		
 		int result = bbsService.updateBBS(map);
 
-		String data = result > 0 ? SUCCESS:FAILED;
+		String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
 		
 		return data;
 	}
@@ -210,11 +208,11 @@ public class BBSController {
 	@RequestMapping(value = "/devOps/write.do", method = RequestMethod.POST)
 	public String devOpsWriteDo(@RequestParam HashMap<String, Object> map, Model model) {
 		
-		map.put("category", DEVOPS_CATEGORY);
+		map.put("category", FinalStringData.DEVOPS_CATEGORY);
 		
 		int result = bbsService.insertBBS(map);
 		
-		String data = result > 0 ? SUCCESS:FAILED;
+		String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
 		
 		return data;
 	}
@@ -225,7 +223,7 @@ public class BBSController {
 
 		int result = bbsService.deleteBBS(idx);
 		
-		String data = result > 0 ? SUCCESS:FAILED;
+		String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
 		
 		return data;
 	}
@@ -250,7 +248,7 @@ public class BBSController {
 		
 		int result = bbsService.updateBBS(map);
 
-		String data = result > 0 ? SUCCESS:FAILED;
+		String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
 		
 		return data;
 	}
