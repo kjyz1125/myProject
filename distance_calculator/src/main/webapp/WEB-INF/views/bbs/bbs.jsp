@@ -46,7 +46,7 @@
 		</ul>
 		<ul class="pagination" style="width:50%;">
 			<li class="page-item">
-				<a class="page-link" href="#" onclick="location.href= location.pathname + '/write'" style="float:right;">등록</a>
+				<!-- <a class="page-link" href="#" onclick="location.href= location.pathname + '/write'" style="float:right;">등록</a> -->
 			</li>
 		</ul>
 	</div>
