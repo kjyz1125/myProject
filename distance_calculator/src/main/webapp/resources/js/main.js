@@ -7,9 +7,9 @@ $(function() {
 		if(idx == 'django-api'){
 			location.href = "http://localhost:8000/api/v1/members";
 		}else if(idx == 'github'){
-			location.href = "https://github.com/kjyz1125";
+			window.open("https://github.com/kjyz1125","_blank");
 		}else if(idx == 'jenkins'){
-			location.href = "http://52.79.79.61:8080";
+			window.open("http://52.79.79.61:8080","_blank");
 		}else{
 			location.href="/"+idx;
 		}
