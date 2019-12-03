@@ -38,6 +38,7 @@ public class MainController {
 		return "main";
 	}
 	
+	
 	@RequestMapping(value = "/dc", method = RequestMethod.GET)
 	public String distance_calculator(Locale locale, Model model) {
 		

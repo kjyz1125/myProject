@@ -1,4 +1,5 @@
 $(function() {
+	
 	$("#write").click(function(e){
 		e.preventDefault();
 		
