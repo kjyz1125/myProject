@@ -13,9 +13,9 @@
 	authentication-success-handler-ref="loginSuccessHandler"  
 	authentication-failure-handler-ref="loginFailureHandler"/>
   <logout logout-success-url="/main" /> 
-  <port-mappings>
+  <!-- <port-mappings>
     <port-mapping http="8080" https="443"/>
-  </port-mappings> 
+  </port-mappings> --> 
 </http>
 
 <beans:bean id="loginSuccessHandler" class="com.eljamdev.auth.core.LoginSuccessHandler"></beans:bean>
