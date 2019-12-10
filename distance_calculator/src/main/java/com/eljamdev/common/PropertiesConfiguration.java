@@ -1,4 +1,4 @@
-package com.distancecalc.common;
+package com.eljamdev.common;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 
-import com.distancecalc.controller.BBSController;
+import com.eljamdev.controller.BBSController;
 
 public class PropertiesConfiguration {
 	

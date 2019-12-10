@@ -1,15 +1,16 @@
-package com.distancecalc.service;
+package com.eljamdev.service.mapper;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 import org.springframework.stereotype.Service;
 
-import com.distancecalc.common.Pagination;
-import com.distancecalc.common.Search;
+import com.eljamdev.common.Pagination;
+import com.eljamdev.common.Search;
 
 @Service
-public interface BBSService {
+public interface BBSMapper {
 	
 	public ArrayList<HashMap<String, Object>> getBBS(Pagination pagination);
 	public HashMap<String, Object> getBBSInfo(int idx);

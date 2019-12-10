@@ -1,4 +1,4 @@
-package com.distancecalc.service.impl;
+package com.eljamdev.service.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,11 +8,11 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.distancecalc.common.Pagination;
-import com.distancecalc.common.Search;
-import com.distancecalc.service.*;
-import com.distancecalc.service.mapper.BBSMapper;
-import com.distancecalc.service.mapper.MainMapper;
+import com.eljamdev.common.Pagination;
+import com.eljamdev.common.Search;
+import com.eljamdev.service.*;
+import com.eljamdev.service.mapper.BBSMapper;
+import com.eljamdev.service.mapper.MainMapper;
 
 @Repository
 public class BBSServiceImpl implements BBSService {

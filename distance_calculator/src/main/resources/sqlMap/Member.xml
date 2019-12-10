@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "=//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.distancecalc.service.mapper.MainMapper">
+<mapper namespace="com.eljamdev.service.mapper.MemberMapper">
 	<select id="getMemberInfo" resultType="HashMap">
 		select * from member
 	</select>
+	
+	<select id="login" resultType="HashMap">
+		select 
+			id
+			,password
+			,name
+			,email
+			,phone
+			,useyn
+			,regdate
+		from member where id = #{id} and useyn = 'Y'
+	</select>
 </mapper>
+

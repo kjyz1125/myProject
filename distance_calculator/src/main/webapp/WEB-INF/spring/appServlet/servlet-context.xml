@@ -17,16 +17,19 @@
 	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<context:component-scan base-package="com.distancecalc"> 
+	<context:component-scan base-package="com.eljamdev"> 
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/> 
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>
-	
+
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	    <beans:property name="maxUploadSize" value="100000000" />
 	    <beans:property name="maxInMemorySize" value="100000000" />
 	</beans:bean>
+	
+	<beans:bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+	
 	
 	<mvc:annotation-driven />
 	<mvc:resources mapping="/favicon.ico" location="/resources/img/favicon.ico" />

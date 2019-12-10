@@ -1,4 +1,4 @@
-package com.distancecalc.common;
+package com.eljamdev.common;
 
 public class FinalStringData {
 

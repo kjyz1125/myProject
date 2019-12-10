@@ -1,23 +1,24 @@
-package com.distancecalc.controller;
+package com.eljamdev.controller;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.distancecalc.service.MainService;
+import com.eljamdev.service.MemberService;
+import com.eljamdev.vo.User;
 
 /**
  * Handles requests for the application home page.
@@ -26,7 +27,7 @@ import com.distancecalc.service.MainService;
 public class MainController {
 	
 	@Autowired
-	private MainService mainService;
+	private MemberService memberService;
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	/**
@@ -51,6 +52,18 @@ public class MainController {
 		res.setStatus(HttpServletResponse.SC_OK);
 		
 		return "common/error404";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	public HashMap<String,Object> login(HttpSession session,
+			@RequestParam HashMap<String,String> map) throws IllegalStateException, IOException 
+	{
+		HashMap<String,Object> result = new HashMap<String, Object>();
+		result.put("result", memberService.getMember(map.get("id")));
+
+		return result;
+
 	}
 	
 }

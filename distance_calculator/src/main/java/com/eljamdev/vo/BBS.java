@@ -1,4 +1,4 @@
-package com.distancecalc.vo;
+package com.eljamdev.vo;
 
 public class BBS {
 	

@@ -1,4 +1,4 @@
-package com.distancecalc.controller;
+package com.eljamdev.controller;
 
 
 import java.util.ArrayList;
@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.distancecalc.common.FinalStringData;
-import com.distancecalc.common.Pagination;
-import com.distancecalc.common.PropertiesConfiguration;
-import com.distancecalc.common.Search;
-import com.distancecalc.service.BBSService;
+import com.eljamdev.common.FinalStringData;
+import com.eljamdev.common.Pagination;
+import com.eljamdev.common.PropertiesConfiguration;
+import com.eljamdev.common.Search;
+import com.eljamdev.service.BBSService;
 
 
 /**

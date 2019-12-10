@@ -25,14 +25,23 @@
 		<div class="menu" data="github" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
 			<span style="display:table-cell;text-align:center;vertical-align:middle;">github</span>
 		</div>
-		<div class="menu" data="login" style="float:right; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
-			<span style="display:table-cell;text-align:center;vertical-align:middle;">LOGIN</span>
-		</div> 
 		<div class="menu" data="jenkins" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
 			<span style="display:table-cell;text-align:center;vertical-align:middle;">jenkins</span>
 		</div>
+		<div class="menu" data="login" style="float:right; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
+			<span style="display:table-cell;text-align:center;vertical-align:middle;">LOGIN</span>
+		</div> 
 	</div>
 </div>
 </body>
 <div style="width:100%; margin-bottom:5%;">
+</div>
+<div id="loginPopup" style="background-color:black;position:absolute;width:30%;height:30%;top:300px;left:300px;z-index:9999;display:none;">
+	<form id="loginForm2">
+		<label class="" for="exampleInputPassword2">EMAIL</label>
+		<input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email" name="j_username">
+		<label class="" for="exampleInputPassword2" style="margin-top:10px;">Password</label>
+		<input type="password" class="form-control"	id="exampleInputPassword2" placeholder="Password" name="j_password">
+		<button type="submit" class="btn btn-default pull-right" style="margin-top:10px; color:white;" value="Login" onclick="ajaxLogin2()"> 로그인</button>
+	</form> 
 </div>
