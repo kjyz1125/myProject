@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
- <http auto-config="true" use-expressions="true">   
+<!--  <http auto-config="true" use-expressions="true">   
      <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" requires-channel="https"/>
      <intercept-url pattern="/*" access="permitAll" requires-channel="https"/> 
      <intercept-url pattern="/*/*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" requires-channel="https"/>
@@ -16,6 +16,16 @@
   <port-mappings>
     <port-mapping http="8080" https="8443"/>
   </port-mappings>
+</http>
+ -->
+ <http auto-config="true" use-expressions="true">   
+     <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
+     <intercept-url pattern="/*" access="permitAll"/> 
+     <intercept-url pattern="/*/*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"/>
+  <form-login login-page="/login.do" 
+	authentication-success-handler-ref="loginSuccessHandler"  
+	authentication-failure-handler-ref="loginFailureHandler"/>
+  <logout logout-success-url="/" /> 
 </http>
 
 <beans:bean id="loginSuccessHandler" class="com.eljamdev.auth.core.LoginSuccessHandler"></beans:bean>
