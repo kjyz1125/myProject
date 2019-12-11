@@ -12,10 +12,10 @@
   <form-login login-page="/login.do" 
 	authentication-success-handler-ref="loginSuccessHandler"  
 	authentication-failure-handler-ref="loginFailureHandler"/>
-  <logout logout-success-url="/main" /> 
-  <!-- <port-mappings>
-    <port-mapping http="8080" https="443"/>
-  </port-mappings> --> 
+  <logout logout-success-url="/" /> 
+  <port-mappings>
+    <port-mapping http="8080" https="8443"/>
+  </port-mappings>
 </http>
 
 <beans:bean id="loginSuccessHandler" class="com.eljamdev.auth.core.LoginSuccessHandler"></beans:bean>
