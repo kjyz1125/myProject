@@ -4,14 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
 import com.eljamdev.service.MemberService;
 import com.eljamdev.vo.User;
 
+@Component
 public class UserService implements UserDetailsService{
 
 	@Autowired
-	MemberService memberService;
+	private MemberService memberService;
 
 	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException{
 
