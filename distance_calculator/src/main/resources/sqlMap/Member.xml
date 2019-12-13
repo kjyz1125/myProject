@@ -5,7 +5,7 @@
 		select * from member
 	</select>
 	
-	<select id="login" resultType="HashMap">
+	<select id="getMember" resultType="com.eljamdev.vo.User">
 		select 
 			id
 			,password

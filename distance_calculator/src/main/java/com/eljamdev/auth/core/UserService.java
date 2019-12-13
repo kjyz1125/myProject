@@ -20,15 +20,20 @@ public class UserService implements UserDetailsService{
         System.out.println(id);
 
         User userInfo = new User();
-
+        
+        PasswordEncoding encode = new PasswordEncoding();
+        
         userInfo = memberService.getMember(id);
 
         User user = new User();
 
+        user.setId(userInfo.getId());
         user.setName(userInfo.getUsername());
         user.setPassword(userInfo.getPassword());
         user.setName(userInfo.getName());
         user.setMemSq(userInfo.getMemSq());
+        user.setPhone(userInfo.getPhone());
+        user.setDate(userInfo.getDate());
         user.setRole(userInfo.getRole());
         
         return user;

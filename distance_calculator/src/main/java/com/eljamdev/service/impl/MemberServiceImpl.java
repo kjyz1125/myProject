@@ -37,8 +37,6 @@ public class MemberServiceImpl implements MemberService {
 		//PasswordEncoding passwordEncoder = new PasswordEncoding();
 		//HashMap<String, Object> map = new HashMap<String, Object>();
 		
-		User user = new User();
-		
 		return 	memberMapper.getMember(id);
 	}	
 

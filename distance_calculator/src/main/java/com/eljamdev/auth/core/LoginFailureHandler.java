@@ -14,6 +14,8 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 	  public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException auth) 
 			  throws IOException, ServletException
 	    {
-	     response.sendRedirect("/main");
+		  
+		  System.out.println("*****************login failed*****************");
+		  
 	    }
 }

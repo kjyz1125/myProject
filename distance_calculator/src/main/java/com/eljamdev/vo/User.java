@@ -35,7 +35,7 @@ public class User implements UserDetails{
         String str= getRole();        // Role이 ADMIN일 경우 ROLE_ADMIN 권한 부여 
        
         if(str!=""&&str!=null){
-    	   if(str.equals("ADMIN")){
+    	   if(str.equals("ROLE_ADMIN")){
         	   authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
            }
        }else{
@@ -47,26 +47,26 @@ public class User implements UserDetails{
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 }

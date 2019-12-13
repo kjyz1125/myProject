@@ -12,6 +12,9 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.server.ServletServerHttpResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
@@ -21,24 +24,28 @@ import org.springframework.security.web.savedrequest.SavedRequest;
 import com.eljamdev.vo.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class LoginSuccessHandler implements AuthenticationSuccessHandler  {
-	
+public class LoginSuccessHandler implements AuthenticationSuccessHandler {
+
 	private static final Logger logger = LoggerFactory.getLogger(LoginSuccessHandler.class);
-	
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth) throws IOException, ServletException
-    {
 
-    	ObjectMapper om = new ObjectMapper();
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth)
+			throws IOException, ServletException {
 
-  		Map<String, Object> map = new HashMap<String, Object>();
+		System.out.println("*****************login success*****************");
 
-		map.put("returnUrl", getReturnUrl(request, response));   // 로그인 요청하기전 페이지 주소
+		ObjectMapper om = new ObjectMapper();
 
-		User member = (User)auth.getPrincipal();
+		Map<String, Object> map = new HashMap<String, Object>();
 
-		map.put("member",member);
+		map.put("returnUrl", getReturnUrl(request, response)); // 로그인 요청하기전 페이지 주소
 
-		logger.info("auth::"+auth.getAuthorities());
+		User member = (User) auth.getPrincipal();
+		
+		System.out.println(auth.getCredentials());
+
+		map.put("member", member);
+
+		logger.info("auth::" + auth.getAuthorities());
 
 		HttpSession session = request.getSession(true);
 
@@ -47,11 +54,13 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler  {
 		session.setAttribute("memSq", member.getMemSq()); // 세션에 담아서 원래 페이지로 보냄
 
 		String jsonString = om.writeValueAsString(map);
+		
+		System.out.println(jsonString);
+		
 		OutputStream out = response.getOutputStream();
 		out.write(jsonString.getBytes());
 
 	}
-	
 
 	private String getReturnUrl(HttpServletRequest request, HttpServletResponse response) {
 

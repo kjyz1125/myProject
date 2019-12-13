@@ -1,4 +1,5 @@
-$(function() {
+$(function(){
+	
 	$(document).on("click",".menu",function(e){ 
 		e.preventDefault();
 		
@@ -16,20 +17,58 @@ $(function() {
 			location.href="/"+idx;
 		}
 	});
-	
-	function ajaxLogin2(){
-		
-		$.ajax({
-
-			type: 'POST',
-			url: '/login.do',
-			data: $("#loginForm2").serialize(),
-			dataType : 'json', 
-		    success : function(data) {
-		    	location.href="/main";
-		    },error : function(data){
-		    	alert("로그인실패");
-		    }
-		});
-	} 
 });
+
+function ajaxLogin2(){
+	
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+	
+	$.ajaxSetup({
+	     beforeSend: function(xhr) {
+	        xhr.setRequestHeader('CORS', 'Access-Control-Allow-Origin');
+	        xhr.setRequestHeader(header, token);
+	    }
+	});
+
+	$.ajax({
+
+		type: 'POST',
+		url: '/login',
+		data: $("#loginForm2").serialize(),
+		dataType : 'json',
+		async:false,
+		success : function(data) {
+			console.log("로그인 성공");
+			location.href=data.returnUrl;
+	    },error : function(data){
+	    	alert("로그인실패");
+	    }
+	});
+} 
+
+function ajaxLogout(){
+	
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+	
+	$.ajaxSetup({
+	     beforeSend: function(xhr) {
+	        xhr.setRequestHeader('CORS', 'Access-Control-Allow-Origin');
+	        xhr.setRequestHeader(header, token);
+	    }
+	});
+
+	$.ajax({
+		type: 'POST',
+		url: '/logout',
+		async:false,
+		success : function(data) {
+	    	alert("로그아웃 성공");
+	    },error : function(data){
+	    	alert("로그아웃 실패");
+	    }
+	});
+}
+
+
