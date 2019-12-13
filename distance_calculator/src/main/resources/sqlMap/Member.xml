@@ -17,5 +17,27 @@
 			,role
 		from member where id = #{id} and useyn = 'Y'
 	</select>
+	
+	
+	<update id="insertMember">
+		insert into member
+		(id
+			,password
+			,name
+			,email
+			,phone
+			,useyn
+			,regdate
+			,role)
+		values
+			(#{id}
+			,#{password}
+			,#{name}
+			,#{email}
+			,#{phone}
+			,'Y'
+			,NOW()
+			,'ROLE_USER')
+	</update>
 </mapper>
 

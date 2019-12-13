@@ -54,6 +54,7 @@
 		<input type="text" class="form-control" id="loginId" placeholder="Enter id" name="id">
 		<label class="" for="exampleInputPassword2" style="margin-top:10px;">Password</label>
 		<input type="password" class="form-control"	id="loginPWD" placeholder="Password" name="password">
-		<button type="button" class="btn btn-default pull-right" style="margin-top:10px; color:white;" value="Login" onclick="ajaxLogin2()"> 로그인</button>
+		<button type="button" class="btn btn-default pull-right" style="margin-top:10px; color:white;" value="Login" onclick="ajaxLogin2()">로그인</button>
+		<button type="button" class="btn btn-default pull-right" style="margin-top:10px; color:white;" value="Login" onclick="location.href='/join'">회원가입</button>
 	</form> 
 </div>

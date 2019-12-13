@@ -5,9 +5,14 @@
 <tiles-definitions>
   <definition name="main" template="/WEB-INF/views/layout/layout.jsp">
 	  <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
-	  <put-attribute name="body" value=""/>
-	  <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+	  <put-attribute name="body" value="" />
+	  <put-attribute name="footer" value="" />
   </definition>
+  
+<!--   <definition name="*" extends="main">
+	  <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
+  </definition>
+   -->
   <definition name="*/*" extends="main">
 	  <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
   </definition>

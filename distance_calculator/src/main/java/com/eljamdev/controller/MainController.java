@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.eljamdev.service.MemberService;
-import com.eljamdev.vo.User;
 
 /**
  * Handles requests for the application home page.
@@ -36,14 +36,14 @@ public class MainController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main(Locale locale, Model model) {
 
-		return "main";
+		return "/main";
 	}
 	
 	
 	@RequestMapping(value = "/dc", method = RequestMethod.GET)
 	public String distance_calculator(Locale locale, Model model) {
 		
-		return "dc";
+		return "/dc";
 	}
 	
 	@RequestMapping(value = "/error", method = RequestMethod.GET)
@@ -63,6 +63,34 @@ public class MainController {
 		result.put("result", memberService.getMember(map.get("id")));
 
 		return result;
+
+	}
+	
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public String join(HttpSession session, Model model)
+	{
+
+		return "/join";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
+	public HashMap<String,Object> doJoin(HttpSession session
+			,@RequestParam HashMap<String,String> map
+			,HttpServletRequest request
+			,HttpServletResponse response) throws IllegalStateException, IOException 
+	{
+		
+		int result = 0;
+		HashMap<String,Object> resultMap = new HashMap<String, Object>();
+		
+		//result = memberService.insertMember(map);
+		
+		resultMap = memberService.insertMember(map);
+		
+		resultMap.put("result",result);
+
+		return resultMap;
 
 	}
 	

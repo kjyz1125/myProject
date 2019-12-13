@@ -34,10 +34,29 @@ public class MemberServiceImpl implements MemberService {
 	public User getMember(String id) {
 		
 		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
-		//PasswordEncoding passwordEncoder = new PasswordEncoding();
-		//HashMap<String, Object> map = new HashMap<String, Object>();
-		
+
 		return 	memberMapper.getMember(id);
+	}
+
+	@Override
+	public HashMap<String, Object> insertMember(HashMap<String, String> map) {
+		
+		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		PasswordEncoding encoder = new PasswordEncoding();
+	
+		String decodedPassword = map.get("password");
+		
+		String encodedPassword = encoder.encode(decodedPassword);
+		
+		map.put("password", encodedPassword);
+	
+		
+		result = memberMapper.insertMember(map);
+		
+		return result;
 	}	
 
 }

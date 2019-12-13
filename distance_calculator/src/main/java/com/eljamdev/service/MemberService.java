@@ -11,4 +11,5 @@ import com.eljamdev.vo.User;
 public interface MemberService {
 	public ArrayList<HashMap<String,Object>> getMemberInfo(String id);
 	public User getMember(String id);
+	public HashMap<String, Object> insertMember(HashMap<String, String> map);
 }

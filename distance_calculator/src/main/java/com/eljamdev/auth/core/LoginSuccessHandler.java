@@ -12,15 +12,10 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.MediaType;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.http.server.ServletServerHttpResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
-import org.springframework.security.web.savedrequest.RequestCache;
-import org.springframework.security.web.savedrequest.SavedRequest;
 
+import com.eljamdev.common.CommonMethod;
 import com.eljamdev.vo.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -37,7 +32,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		map.put("returnUrl", getReturnUrl(request, response)); // 로그인 요청하기전 페이지 주소
+		map.put("returnUrl", CommonMethod.getReturnUrl(request, response)); // 로그인 요청하기전 페이지 주소
 
 		User member = (User) auth.getPrincipal();
 		
@@ -60,16 +55,5 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		OutputStream out = response.getOutputStream();
 		out.write(jsonString.getBytes());
 
-	}
-
-	private String getReturnUrl(HttpServletRequest request, HttpServletResponse response) {
-
-		RequestCache requestCache = new HttpSessionRequestCache();
-		SavedRequest savedRequest = requestCache.getRequest(request, response);
-
-		if (savedRequest == null) {
-			return request.getSession().getServletContext().getContextPath();
-		}
-		return savedRequest.getRedirectUrl();
 	}
 }
