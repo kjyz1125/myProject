@@ -1,4 +1,4 @@
-FROM kjyz1125/prom7
+FROM 584828397695.dkr.ecr.ap-northeast-2.amazonaws.com/tomcat
 MAINTAINER kjyz1125@gmail.com (https://github.com/kjyz1125)
 
 # ADD setenv.sh ${CATALINA_HOME}/bin/setenv.sh
