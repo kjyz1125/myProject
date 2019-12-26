@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="/resources/js/main.js"></script>
 </head>
 <h1>
-NOW MAINTENANCE
+테스트 전
 </h1>
 <body style="width:100%; margin-bottom:10px;">
 	<div style="margin:0 auto; width:90%; height:10%; background-color:black;">
