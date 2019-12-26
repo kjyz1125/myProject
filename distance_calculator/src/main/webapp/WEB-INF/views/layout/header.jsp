@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	<script type="text/javascript" src="/resources/js/main.js"></script>
 </head>
+<h1>
+NOW MAINTENANCE
+</h1>
 <body style="width:100%; margin-bottom:10px;">
 	<div style="margin:0 auto; width:90%; height:10%; background-color:black;">
  	<div style="margin:0 auto; color:white;">
