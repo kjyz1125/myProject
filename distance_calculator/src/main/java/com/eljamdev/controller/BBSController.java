@@ -4,6 +4,9 @@ package com.eljamdev.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,8 +98,11 @@ public class BBSController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/bbs/write.do", method = RequestMethod.POST)
-	public String bbsWriteDo(@RequestParam HashMap<String, Object> map, Model model) {
+	public String bbsWriteDo(HttpServletRequest request, @RequestParam HashMap<String, Object> map, Model model) {
 		
+		
+		HttpSession session = request.getSession(true);
+		map.put("writer"  , session.getAttribute("name"));
 		map.put("category", FinalStringData.BBS_CATEGORY);
 		
 		int result = bbsService.insertBBS(map);

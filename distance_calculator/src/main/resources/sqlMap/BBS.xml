@@ -52,7 +52,7 @@
 	</select>
 	
 	<update id="insertBBS" parameterType="HashMap">
-		insert into bbs (title, contents, writer, regdate, useyn, category) values (#{title}, #{contents}, 'master', NOW(), 'Y', #{category})
+		insert into bbs (title, contents, writer, regdate, useyn, category) values (#{title}, #{contents}, #{writer}, NOW(), 'Y', #{category})
 	</update>
 	
 	<update id="deleteBBS" parameterType="HashMap">

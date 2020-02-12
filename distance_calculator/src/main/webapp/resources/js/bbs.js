@@ -7,6 +7,17 @@ $(function() {
 		
 		if(result){
 			
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+			
+			$.ajaxSetup({
+			     beforeSend: function(xhr) {
+			        xhr.setRequestHeader('CORS', 'Access-Control-Allow-Origin');
+			        xhr.setRequestHeader(header, token);
+			    }
+			});
+			
+			
 			var param = $("#writeForm").serialize();
 			
 			$.ajax({

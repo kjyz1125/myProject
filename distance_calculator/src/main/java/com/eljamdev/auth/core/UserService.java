@@ -33,7 +33,8 @@ public class UserService implements UserDetailsService{
         user.setName(userInfo.getName());
         user.setMemSq(userInfo.getMemSq());
         user.setPhone(userInfo.getPhone());
-        user.setDate(userInfo.getDate());
+        user.setReg_date(userInfo.getReg_date());
+        user.setUseyn(userInfo.getUseyn());
         user.setRole(userInfo.getRole());
         
         return user;

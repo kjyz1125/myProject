@@ -9,12 +9,10 @@
     <meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
 	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
     <link rel="stylesheet" type="text/css" href="/resources/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	<script type="text/javascript" src="/resources/js/main.js"></script>
 </head>
-<h1>
-김지영 짱 테스트
-</h1>
 <body style="width:100%; margin-bottom:10px;">
 	<div style="margin:0 auto; width:90%; height:10%; background-color:black;">
  	<div style="margin:0 auto; color:white;">
@@ -50,14 +48,14 @@
 </body>
 <div style="width:100%; margin-bottom:5%;">
 </div>
-<div id="loginPopup" style="background-color:black;position:absolute;width:30%;height:30%;top:300px;left:300px;z-index:9999;display:none;">
-	<form id="loginForm2">
+<div id="loginPopup" style="width:30%;height:30%;top:300px;left:300px;z-index:9999;display:none; margin:0 auto;">
+	<form id="loginForm2" style="background-color:black;">
 		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
 		<label class="" for="exampleInputPassword2">EMAIL</label>
-		<input type="text" class="form-control" id="loginId" placeholder="Enter id" name="id">
+		<input type="text" class="form-control login" id="loginId" placeholder="Enter id" name="id">
 		<label class="" for="exampleInputPassword2" style="margin-top:10px;">Password</label>
-		<input type="password" class="form-control"	id="loginPWD" placeholder="Password" name="password">
+		<input type="password" class="form-control login"	id="loginPWD" placeholder="Password" name="password">
 		<button type="button" class="btn btn-default pull-right" style="margin-top:10px; color:white;" value="Login" onclick="ajaxLogin2()">로그인</button>
-		<button type="button" class="btn btn-default pull-right" style="margin-top:10px; color:white;" value="Login" onclick="location.href='/join'">회원가입</button>
+		<button type="button" class="btn btn-default pull-right" style="margin-top:10px; color:white;" value="Join" onclick="location.href='/join'">회원가입</button>
 	</form> 
 </div>

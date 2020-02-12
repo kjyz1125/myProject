@@ -22,7 +22,7 @@ public class User implements UserDetails{
 	private String memSq;
 	private String name;
 	private String phone;
-	private String date;
+	private String reg_date;
 	private String password;
 	private String useyn;
 	private String role;

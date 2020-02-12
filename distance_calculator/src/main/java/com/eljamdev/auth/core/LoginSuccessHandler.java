@@ -45,6 +45,8 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		HttpSession session = request.getSession(true);
 
 		session.setAttribute("name", member.getName());
+		
+		session.setAttribute("id", 	member.getId());
 
 		session.setAttribute("memSq", member.getMemSq()); // 세션에 담아서 원래 페이지로 보냄
 

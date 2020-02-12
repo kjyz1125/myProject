@@ -17,6 +17,12 @@ $(function(){
 			location.href="/"+idx;
 		}
 	});
+	
+	$(".login").keydown(function(e){ 
+        if(e.keyCode == 13){
+        	ajaxLogin2();
+        }
+    });
 });
 
 function ajaxLogin2(){
@@ -30,6 +36,16 @@ function ajaxLogin2(){
 	        xhr.setRequestHeader(header, token);
 	    }
 	});
+	
+	if($("#loginId").val() == ""){
+		alert("아이디를 입력하세요.");
+		return;
+	}
+	
+	if($("#loginPWD").val() == ""){
+		alert("비밀번호를 입력하세요.");
+		return;
+	}
 
 	$.ajax({
 
