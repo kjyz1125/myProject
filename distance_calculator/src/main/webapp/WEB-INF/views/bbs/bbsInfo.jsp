@@ -9,8 +9,10 @@
 <title>${title} - eljamdev</title>
 </head>
 <body style="width:100%; height:100%;">
-	<div style="width:80%; margin:0 auto; border:1px solid black;">
-		${data.title}
+	<div style="width:80%; margin:0 auto;">
+		<h1>
+			${data.title}
+		</h1>
 	</div>
 	</br>
 	<div style="width:80%; margin:0 auto; border:1px solid black;">

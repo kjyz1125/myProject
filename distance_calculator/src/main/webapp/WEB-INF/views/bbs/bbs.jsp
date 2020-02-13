@@ -19,13 +19,19 @@
 		<div style="display:inline-block;width:10%">조회수</div>
 	</div>
 	<br/>
-	<div style="width:80%; margin:0 auto;">	
+	<div style="width:80%; margin:0 auto;">
+	<c:if test="${empty data}">
+		<div style="display:inline-block;width:100%;text-align:center;">
+			등록된 게시물이 없습니다.
+		</div>
+	</c:if>
 		<c:forEach var="data" items="${data}" varStatus="status">
-			<div style="display:inline-block;width:10%;"><span style="cursor:pointer;" onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${data.idx}"/></span></div>
+			<div style="display:inline-block;width:10%;"><span style="cursor:pointer;" onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${(count-pagination.startList)-status.index}"/></span></div>
 			<div style="display:inline-block;width:58%;"><span class="underline" style="cursor:pointer;" onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${data.title}"/></span></div>
 			<div style="display:inline-block;width:19%;"><span style="cursor:pointer;" onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${data.writer}"/></span></div>
 			<div style="display:inline-block;width:10%"><c:out value="${data.count}"/></div>
 		</c:forEach>
+		
 	</div>
 	<br/>
 	

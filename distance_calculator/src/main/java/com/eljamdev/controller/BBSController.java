@@ -66,6 +66,7 @@ public class BBSController {
 		model.addAttribute("title", "BBS");
 		model.addAttribute("pagination", search);
 		model.addAttribute("data", list);
+		model.addAttribute("count", listCnt);
 		
 		return "bbs/bbs";
 	}
@@ -180,6 +181,7 @@ public class BBSController {
 		model.addAttribute("title", "DevOps");
 		model.addAttribute("pagination", search);
 		model.addAttribute("data", list);
+		model.addAttribute("count", listCnt);
 		
 		return "bbs/bbs";
 	}
@@ -212,8 +214,10 @@ public class BBSController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/devOps/write.do", method = RequestMethod.POST)
-	public String devOpsWriteDo(@RequestParam HashMap<String, Object> map, Model model) {
+	public String devOpsWriteDo(HttpServletRequest request, @RequestParam HashMap<String, Object> map, Model model) {
 		
+		HttpSession session = request.getSession(true);
+		map.put("writer"  , session.getAttribute("name"));
 		map.put("category", FinalStringData.DEVOPS_CATEGORY);
 		
 		int result = bbsService.insertBBS(map);

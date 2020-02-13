@@ -92,9 +92,11 @@ public class Pagination {
 		this.page = page;
 		this.range = range;
 		this.listCnt = listCnt;
+		
+		double cnt = (double) listCnt/listSize;
 
 		//전체 페이지수 
-		this.pageCnt = (int) Math.ceil(listCnt/listSize);
+		this.pageCnt = (int) Math.ceil(cnt);
 
 		//시작 페이지
 		this.startPage = (range - 1) * rangeSize + 1 ;
