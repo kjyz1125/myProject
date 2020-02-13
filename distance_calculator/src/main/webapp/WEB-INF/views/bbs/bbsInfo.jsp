@@ -16,7 +16,7 @@
 	</div>
 	</br>
 	<div style="width:80%; margin:0 auto; border:1px solid black;">
-		<c:out value="${data.contents}"/>
+		${data.contents}
 	</div>
 	<div style="width:80%; height:100%; margin:0 auto;">
 		<div id="delete" style="border:1px solid black;cursor:pointer;display:inline-block;float:right;width:10%">삭제</div>
