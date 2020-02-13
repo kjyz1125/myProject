@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.eljamdev.common.FinalStringData;
 import com.eljamdev.service.MemberService;
 
 /**
@@ -54,18 +55,6 @@ public class MainController {
 		return "common/error404";
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public HashMap<String,Object> login(HttpSession session,
-			@RequestParam HashMap<String,String> map) throws IllegalStateException, IOException 
-	{
-		HashMap<String,Object> result = new HashMap<String, Object>();
-		result.put("result", memberService.getMember(map.get("id")));
-
-		return result;
-
-	}
-	
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join(HttpSession session, Model model)
 	{
@@ -75,22 +64,17 @@ public class MainController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
-	public HashMap<String,Object> doJoin(HttpSession session
+	public String doJoin(HttpSession session
 			,@RequestParam HashMap<String,String> map
 			,HttpServletRequest request
 			,HttpServletResponse response) throws IllegalStateException, IOException 
 	{
 		
-		int result = 0;
-		HashMap<String,Object> resultMap = new HashMap<String, Object>();
-		
-		//result = memberService.insertMember(map);
-		
-		resultMap = memberService.insertMember(map);
-		
-		resultMap.put("result",result);
+		int result = memberService.insertMember(map);
 
-		return resultMap;
+		String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+		
+		return data;
 
 	}
 	

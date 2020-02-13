@@ -6,6 +6,11 @@
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
 <http auto-config="true" use-expressions="true">   
+	<intercept-url pattern="/**/write" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"/>
+	<intercept-url pattern="/**/update" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"/>
+	<intercept-url pattern="/**/delete" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"/>
+	<intercept-url pattern="/**/join.do" access="permitAll"/>
+	<intercept-url pattern="/**/*.do" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"/>
 	<intercept-url pattern="/**" access="permitAll"/>
 	<intercept-url pattern="/resources/**" access="permitAll" />
 	<form-login 

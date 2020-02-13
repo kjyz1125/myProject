@@ -40,7 +40,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
 		map.put("member", member);
 
-		logger.info("auth::" + auth.getAuthorities());
+		System.out.println("auth::" + auth.getAuthorities());
 
 		HttpSession session = request.getSession(true);
 

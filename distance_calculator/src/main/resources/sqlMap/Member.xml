@@ -19,7 +19,7 @@
 	</select>
 	
 	
-	<update id="insertMember">
+	<update id="insertMember" parameterType="HashMap">
 		insert into member
 		(id
 			,password

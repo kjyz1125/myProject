@@ -19,10 +19,8 @@ function ajaxJoin(){
 		type: 'POST',
 		url: '/join.do',
 		data: $("#joinForm").serialize(),
-		dataType : 'json',
-		async:false,
 		success : function(data) {
-			if(data.result == 1){
+			if(data == "SUCCESS"){
 				alert("회원가입 성공");
 				location.href="/";
 			}else{
