@@ -65,26 +65,30 @@ function ajaxLogin2(){
 
 function ajaxLogout(){
 	
-	var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content");
 	
-	$.ajaxSetup({
-	     beforeSend: function(xhr) {
-	        xhr.setRequestHeader('CORS', 'Access-Control-Allow-Origin');
-	        xhr.setRequestHeader(header, token);
-	    }
-	});
-
-	$.ajax({
-		type: 'POST',
-		url: '/logout',
-		async:false,
-		success : function(data) {
-	    	alert("로그아웃 성공");
-	    },error : function(data){
-	    	alert("로그아웃 실패");
-	    }
-	});
+	var result = confirm("로그아웃 하시겠습니까?");
+	
+	if(result){
+	
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+		
+		$.ajaxSetup({
+		     beforeSend: function(xhr) {
+		        xhr.setRequestHeader('CORS', 'Access-Control-Allow-Origin');
+		        xhr.setRequestHeader(header, token);
+		    }
+		});
+	
+		$.ajax({
+			type: 'POST',
+			url: '/logout',
+			async:false,
+			success : function(data) {
+		    },error : function(data){
+		    }
+		});
+	}
 }
 
 

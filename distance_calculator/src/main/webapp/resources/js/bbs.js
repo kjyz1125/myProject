@@ -3,7 +3,7 @@ $(function() {
 	$("#write").click(function(e){
 		e.preventDefault();
 		
-		var result = confirm("Are you sure you want to save this?");
+		var result = confirm("글을 저장하시겠습니까?");
 		
 		if(result){
 			
@@ -45,7 +45,7 @@ $(function() {
 	$("#delete").click(function(e){
 		e.preventDefault();
 		
-		var result = confirm("Are you sure you want to delete this?");
+		var result = confirm("글을 삭제하시겠습니까?");
 		
 		if(result){
 			
@@ -77,7 +77,7 @@ $(function() {
 	$("#update").click(function(e){
 		e.preventDefault();
 		
-		var result = confirm("Are you sure you want to update this?");
+		var result = confirm("글을 수정하시겠습니까?");
 		
 		if(result){
 			
