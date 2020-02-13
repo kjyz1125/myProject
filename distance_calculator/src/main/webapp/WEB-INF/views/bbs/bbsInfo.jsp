@@ -11,19 +11,19 @@
 <body style="width:100%; height:100%;">
 	<div style="width:80%; margin:0 auto;">
 		<h1>
-			${data.title}
+			<c:out value="${data.title}"/>
 		</h1>
 	</div>
 	</br>
 	<div style="width:80%; margin:0 auto; border:1px solid black;">
-		${data.contents}
+		<c:out value="${data.contents}"/>
 	</div>
-<%-- 	<div style="width:80%; height:100%; margin:0 auto;">
+	<div style="width:80%; height:100%; margin:0 auto;">
 		<div id="delete" style="border:1px solid black;cursor:pointer;display:inline-block;float:right;width:10%">삭제</div>
 	</div>
 	<div style="width:80%; height:100%; margin:0 auto;">
 		<div onclick="javascript:location.href='/bbs/${data.idx}/update'" style="border:1px solid black;cursor:pointer;display:inline-block;float:right;width:10%">수정</div>
-	</div> --%>
+	</div>
 	<div style="display:none;">
 		${data.writer}
 	</div>

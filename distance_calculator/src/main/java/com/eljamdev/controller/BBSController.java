@@ -72,7 +72,10 @@ public class BBSController {
 	}
 	
 	@RequestMapping(value = "/bbs/{idx}", method = RequestMethod.GET)
-	public String bbsInfo(@PathVariable int idx, Model model) {
+	public String bbsInfo(HttpServletRequest request, @PathVariable int idx, Model model) {
+		
+		HttpSession session = request.getSession(true);
+		session.setAttribute("id", request.getSession().getAttribute("id"));
 		
 		HashMap<String, Object> hashMap = new HashMap<>();
 		
@@ -126,7 +129,10 @@ public class BBSController {
 
 	
 	@RequestMapping(value = "/bbs/{idx}/update", method = RequestMethod.GET)
-	public String bbsUpdate(@PathVariable int idx, Model model) {
+	public String bbsUpdate(HttpServletRequest request, @PathVariable int idx, Model model) {
+		
+		HttpSession session = request.getSession(true);
+		session.setAttribute("id", request.getSession().getAttribute("id"));
 		
 		HashMap<String, Object> hashMap = new HashMap<>();
 		
