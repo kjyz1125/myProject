@@ -26,7 +26,6 @@ $(function() {
 		        data: param,
 		        success: function (result) {
 		        	if(result == "SUCCESS"){
-		            	alert("성공");
 		            	window.location.href = "/"+location.pathname.split("/")[1];
 		            }else{
 		            	alert("실패");
@@ -49,6 +48,16 @@ $(function() {
 		
 		if(result){
 			
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+			
+			$.ajaxSetup({
+			     beforeSend: function(xhr) {
+			        xhr.setRequestHeader('CORS', 'Access-Control-Allow-Origin');
+			        xhr.setRequestHeader(header, token);
+			    }
+			});
+			
 			var idx = { "idx" : $("#idx").attr("data")};
 			
 			$.ajax({
@@ -57,7 +66,6 @@ $(function() {
 		        data: idx,
 		        success: function (result) {
 		            if(result == "SUCCESS"){
-		            	alert("성공");
 		            	window.location.href = "/"+location.pathname.split("/")[1]
 		            }else{
 		            	alert("실");
@@ -81,6 +89,16 @@ $(function() {
 		
 		if(result){
 			
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+			
+			$.ajaxSetup({
+			     beforeSend: function(xhr) {
+			        xhr.setRequestHeader('CORS', 'Access-Control-Allow-Origin');
+			        xhr.setRequestHeader(header, token);
+			    }
+			});
+			
 			var param = $("#writeForm").serialize();
 			
 			$.ajax({
@@ -89,8 +107,7 @@ $(function() {
 		        data: param,
 		        success: function (result) {
 		            if(result == "SUCCESS"){
-		            	alert("성공");
-		            	window.location.href = location.pathname + "/" +$("input[name=idx]").val();
+		            	window.location.href = "../"+$("input[name=idx]").val();
 		            }else{
 		            	alert("실패");
 		            	window.location.href = location.pathname;

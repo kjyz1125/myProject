@@ -19,13 +19,10 @@
 		${data.contents}
 	</div>
 	<div style="width:80%; height:100%; margin:0 auto;">
-		<div id="delete" style="border:1px solid black;cursor:pointer;display:inline-block;float:right;width:10%">삭제</div>
-	</div>
-	<div style="width:80%; height:100%; margin:0 auto;">
-		<div onclick="javascript:location.href='/bbs/${data.idx}/update'" style="border:1px solid black;cursor:pointer;display:inline-block;float:right;width:10%">수정</div>
-	</div>
-	<div style="display:none;">
-		${data.writer}
+		<c:if test="${not empty name}">
+			<div id="delete" style="border:1px solid black;cursor:pointer;display:inline-block;float:right;width:10%">삭제</div>
+			<div onclick="javascript:location.href='/bbs/${data.idx}/update'" style="border:1px solid black;cursor:pointer;display:inline-block;float:right;width:10%">수정</div>
+		</c:if>
 	</div>
 	<div id="idx" style="display:none;" data="${data.idx}"></div>
 </body>

@@ -28,7 +28,7 @@
 		<c:forEach var="data" items="${data}" varStatus="status">
 			<div style="display:inline-block;width:10%;"><span style="cursor:pointer;" onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${(count-pagination.startList)-status.index}"/></span></div>
 			<div style="display:inline-block;width:58%;"><span class="underline" style="cursor:pointer;" onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${data.title}"/></span></div>
-			<div style="display:inline-block;width:19%;"><span style="cursor:pointer;" onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${data.writer}"/></span></div>
+			<div style="display:inline-block;width:19%;"><span style="cursor:pointer;" onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${data.name}"/></span></div>
 			<div style="display:inline-block;width:10%"><c:out value="${data.count}"/></div>
 		</c:forEach>
 		

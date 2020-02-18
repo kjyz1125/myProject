@@ -7,7 +7,8 @@
 		    idx
 		   ,title
 		   ,count
-		   ,writer
+		   ,name
+		   ,id
 		from bbs
 		 where 
 			useyn = 'Y'
@@ -19,8 +20,8 @@
 		<if test="searchType=='contents' and keyword != null and keyword != '' ">
 			and contents like concat('%', #{keyword}, '%')
 		</if>
-		<if test="searchType=='writer' and keyword != null and keyword != '' ">
-			and writer like concat('%', #{keyword}, '%')
+		<if test="searchType=='name' and keyword != null and keyword != '' ">
+			and name like concat('%', #{keyword}, '%')
 		</if>
 		
 		 order by idx desc 
@@ -28,7 +29,7 @@
 	</select>
 	
 	<select id="getBBSInfo" parameterType="int" resultType="HashMap">
-		select idx, title, CONVERT(contents USING utf8) as contents, writer from bbs where idx = #{idx}
+		select idx, title, CONVERT(contents USING utf8) as contents, name, id from bbs where idx = #{idx}
 	</select>
 	
 	<select id="getBBSCnt" resultType="int">
@@ -46,14 +47,14 @@
 				<if test="searchType=='contents'">
 					and contents like concat('%', #{keyword}, '%')
 				</if>
-				<if test="searchType=='writer'">
-					and writer like concat('%', #{keyword}, '%')
+				<if test="searchType=='name'">
+					and name like concat('%', #{keyword}, '%')
 				</if>
 	      </if>
 	</select>
 	
 	<update id="insertBBS" parameterType="HashMap">
-		insert into bbs (title, contents, writer, regdate, useyn, category) values (#{title}, #{contents}, #{writer}, NOW(), 'Y', #{category})
+		insert into bbs (title, contents, name, regdate, useyn, category, id) values (#{title}, #{contents}, #{name}, NOW(), 'Y', #{category}, #{id})
 	</update>
 	
 	<update id="deleteBBS" parameterType="HashMap">

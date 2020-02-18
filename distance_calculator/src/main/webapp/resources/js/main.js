@@ -88,6 +88,8 @@ function ajaxLogout(){
 		    },error : function(data){
 		    }
 		});
+	}else{
+		return;
 	}
 }
 

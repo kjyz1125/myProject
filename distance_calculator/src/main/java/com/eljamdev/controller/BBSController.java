@@ -74,9 +74,6 @@ public class BBSController {
 	@RequestMapping(value = "/bbs/{idx}", method = RequestMethod.GET)
 	public String bbsInfo(HttpServletRequest request, @PathVariable int idx, Model model) {
 		
-		HttpSession session = request.getSession(true);
-		session.setAttribute("id", request.getSession().getAttribute("id"));
-		
 		HashMap<String, Object> hashMap = new HashMap<>();
 		
 		bbsService.updateBBSCount(idx);
@@ -104,38 +101,53 @@ public class BBSController {
 	@RequestMapping(value = "/bbs/write.do", method = RequestMethod.POST)
 	public String bbsWriteDo(HttpServletRequest request, @RequestParam HashMap<String, Object> map, Model model) {
 		
-		
+		int result = 0;
+		String data = "";
 		HttpSession session = request.getSession(true);
-		map.put("writer"  , session.getAttribute("name"));
+		
+		map.put("id"  , session.getAttribute("id"));
+		map.put("name"  , session.getAttribute("name"));
 		map.put("category", FinalStringData.BBS_CATEGORY);
 		
-		int result = bbsService.insertBBS(map);
-		
-		String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+		result = bbsService.insertBBS(map);
+		data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
 		
 		return data;
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/bbs/delete.do", method = RequestMethod.POST)
-	public String bbsDelete(@RequestParam("idx") int idx, Model model) {
-
-		int result = bbsService.deleteBBS(idx);
+	public String bbsDelete(HttpServletRequest request, @RequestParam("idx") int idx, Model model) {
 		
-		String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+		int result = 0;
+		String id = "";
+		HashMap<String, Object> hashMap = new HashMap<>();
+		HttpSession session = request.getSession(true);
 		
-		return data;
+		hashMap = bbsService.getBBSInfo(idx);
+		id = (String) hashMap.get("id");
+		
+		if(session.getAttribute("id").equals(id)) {	
+			result = bbsService.deleteBBS(idx);
+			String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+			return data;
+		}else{
+			
+			String data = FinalStringData.FAILED;
+			return data;
+		}
+		
+		
 	}
 
 	
 	@RequestMapping(value = "/bbs/{idx}/update", method = RequestMethod.GET)
 	public String bbsUpdate(HttpServletRequest request, @PathVariable int idx, Model model) {
 		
-		HttpSession session = request.getSession(true);
-		session.setAttribute("id", request.getSession().getAttribute("id"));
-		
 		HashMap<String, Object> hashMap = new HashMap<>();
+		HttpSession session = request.getSession(true);
 		
+		session.setAttribute("id", request.getSession().getAttribute("id"));
 		hashMap = bbsService.getBBSInfo(idx);
 		
 		model.addAttribute("title", "BBSModify");
@@ -146,13 +158,24 @@ public class BBSController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/bbs/{idx}/update.do", method = RequestMethod.POST)
-	public String bbsUpdateDo(@RequestParam HashMap<String, Object> map, Model model) {
-		
-		int result = bbsService.updateBBS(map);
+	public String bbsUpdateDo(HttpServletRequest request, @PathVariable int idx, @RequestParam HashMap<String, Object> map, Model model) {
 
-		String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+		int result = 0;
+		String id = "";
+		HashMap<String, Object> hashMap = new HashMap<>();
+		HttpSession session = request.getSession(true);
 		
-		return data;
+		hashMap = bbsService.getBBSInfo(idx);
+		id = (String) hashMap.get("id");
+		
+		if(session.getAttribute("id").equals(id)) {	
+			result = bbsService.updateBBS(map);
+			String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+			return data;
+		}else{	
+			String data = FinalStringData.FAILED;
+			return data;
+		}	
 	}
 	
 	/**
@@ -167,21 +190,16 @@ public class BBSController {
 			,@RequestParam(required = false) String keyword
 			,Model model) 
 	{
-		
+		int listCnt = 0;
 		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
-		
 		Search search = new Search();
 
 		search.setSearchType(searchType);
-
 		search.setKeyword(keyword);
-		
 		search.setCategory(category);
 		
-		int listCnt = bbsService.getBBSCnt(search);
-		
+		listCnt = bbsService.getBBSCnt(search);
 		search.pageInfo(page, range, listCnt);
-		
 		list.addAll(bbsService.getBBS(search));
 		
 		model.addAttribute("title", "DevOps");
@@ -222,26 +240,41 @@ public class BBSController {
 	@RequestMapping(value = "/devOps/write.do", method = RequestMethod.POST)
 	public String devOpsWriteDo(HttpServletRequest request, @RequestParam HashMap<String, Object> map, Model model) {
 		
+		int result = 0;
+		String data = "";
 		HttpSession session = request.getSession(true);
-		map.put("writer"  , session.getAttribute("name"));
-		map.put("category", FinalStringData.DEVOPS_CATEGORY);
 		
-		int result = bbsService.insertBBS(map);
+		map.put("id"  , session.getAttribute("id"));
+		map.put("name"  , session.getAttribute("name"));
+		map.put("category", FinalStringData.BBS_CATEGORY);
 		
-		String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+		result = bbsService.insertBBS(map);
+		data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
 		
 		return data;
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/devOps/delete.do", method = RequestMethod.POST)
-	public String devOpsDelete(@RequestParam("idx") int idx, Model model) {
+	public String devOpsDelete(HttpServletRequest request, @RequestParam("idx") int idx, Model model) {
 
-		int result = bbsService.deleteBBS(idx);
+		int result = 0;
+		String id = "";
+		HashMap<String, Object> hashMap = new HashMap<>();
+		HttpSession session = request.getSession(true);
 		
-		String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+		hashMap = bbsService.getBBSInfo(idx);
+		id = (String) hashMap.get("id");
 		
-		return data;
+		if(session.getAttribute("id").equals(id)) {	
+			result = bbsService.deleteBBS(idx);
+			String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+			return data;
+		}else{
+			
+			String data = FinalStringData.FAILED;
+			return data;
+		}
 	}
 
 	
@@ -260,12 +293,23 @@ public class BBSController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/devOps/{idx}/update.do", method = RequestMethod.POST)
-	public String devOpsUpdateDo(@RequestParam HashMap<String, Object> map, Model model) {
+	public String devOpsUpdateDo(HttpServletRequest request, @PathVariable int idx, @RequestParam HashMap<String, Object> map, Model model) {
 		
-		int result = bbsService.updateBBS(map);
-
-		String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+		int result = 0;
+		String id = "";
+		HashMap<String, Object> hashMap = new HashMap<>();
+		HttpSession session = request.getSession(true);
 		
-		return data;
+		hashMap = bbsService.getBBSInfo(idx);
+		id = (String) hashMap.get("id");
+		
+		if(session.getAttribute("id").equals(id)) {	
+			result = bbsService.updateBBS(map);
+			String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+			return data;
+		}else{	
+			String data = FinalStringData.FAILED;
+			return data;
+		}	
 	}
 }

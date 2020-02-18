@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	<script type="text/javascript" src="/resources/js/main.js"></script>
+	<script data-ad-client="ca-pub-2773802897897850" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body style="width:100%; margin-bottom:10px;">
 	<div style="margin:0 auto; width:90%; height:10%; background-color:black;">
