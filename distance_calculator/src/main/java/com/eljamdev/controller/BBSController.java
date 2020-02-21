@@ -246,7 +246,7 @@ public class BBSController {
 		
 		map.put("id"  , session.getAttribute("id"));
 		map.put("name"  , session.getAttribute("name"));
-		map.put("category", FinalStringData.BBS_CATEGORY);
+		map.put("category", FinalStringData.DEVOPS_CATEGORY);
 		
 		result = bbsService.insertBBS(map);
 		data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
