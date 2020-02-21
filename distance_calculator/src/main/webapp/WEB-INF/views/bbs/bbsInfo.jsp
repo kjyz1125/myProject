@@ -15,13 +15,15 @@
 		</h1>
 	</div>
 	</br>
-	<div style="width:80%; margin:0 auto; border:1px solid black;">
+	<div style="width:80%; margin:0 auto;">
 		${data.contents}
 	</div>
-	<div style="width:80%; height:100%; margin:0 auto;">
+	<div style="width:80%; height:auto; margin:0 auto;">
 		<c:if test="${not empty name}">
-			<div id="delete" style="border:1px solid black;cursor:pointer;display:inline-block;float:right;width:10%">삭제</div>
-			<div onclick="javascript:location.href='/bbs/${data.idx}/update'" style="border:1px solid black;cursor:pointer;display:inline-block;float:right;width:10%">수정</div>
+			<c:if test="${name eq data.name}">
+				<div id="delete" style="border:1px solid black;cursor:pointer;display:inline-block;float:right;width:10%">삭제</div>
+				<div onclick="javascript:location.href='/bbs/${data.idx}/update'" style="border:1px solid black;cursor:pointer;display:inline-block;float:right;width:10%">수정</div>
+			</c:if>
 		</c:if>
 	</div>
 	<div id="idx" style="display:none;" data="${data.idx}"></div>

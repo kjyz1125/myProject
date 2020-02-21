@@ -50,7 +50,7 @@
 </body>
 <div style="width:100%; margin-bottom:5%;">
 </div>
-<div id="loginPopup" style="width:30%;height:30%;top:300px;left:300px;z-index:9999;display:none; margin:0 auto;">
+<div id="loginPopup" style="position:absolute;width:20%;top:11%;left:75%;z-index:999;display:none; margin:0 auto;">
 	<form id="loginForm2" style="background-color:black;">
 		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
 		<label class="" for="exampleInputPassword2">EMAIL</label>
