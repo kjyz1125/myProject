@@ -25,6 +25,10 @@ $(function(){
     });
 });
 
+function loginPopup(){
+	$("#loginPopup").show();
+}
+
 function ajaxLogin2(){
 	
 	var token = $("meta[name='_csrf']").attr("content");

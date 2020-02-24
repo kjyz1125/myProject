@@ -17,11 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.eljamdev.common.FinalStringData;
-import com.eljamdev.common.Pagination;
-import com.eljamdev.common.PropertiesConfiguration;
 import com.eljamdev.common.Search;
 import com.eljamdev.service.BBSService;
 
@@ -63,7 +60,7 @@ public class BBSController {
 		
 		list.addAll(bbsService.getBBS(search));
 		
-		model.addAttribute("title", "BBS");
+		model.addAttribute("title", "NOTICE");
 		model.addAttribute("pagination", search);
 		model.addAttribute("data", list);
 		model.addAttribute("count", listCnt);
@@ -80,7 +77,7 @@ public class BBSController {
 		
 		hashMap = bbsService.getBBSInfo(idx);
 		
-		model.addAttribute("title", "BBSInfo");
+		model.addAttribute("title", "NOTICE");
 		model.addAttribute("data", hashMap);
 		
 		return "bbs/bbsInfo"; 
@@ -91,7 +88,7 @@ public class BBSController {
 		
 		HashMap<String, String> hashMap = new HashMap<>();
 		
-		model.addAttribute("title", "BBSWrite");
+		model.addAttribute("title", "NOTICE");
 		model.addAttribute("data", hashMap);
 		
 		return "bbs/bbsWrite";
@@ -150,7 +147,7 @@ public class BBSController {
 		session.setAttribute("id", request.getSession().getAttribute("id"));
 		hashMap = bbsService.getBBSInfo(idx);
 		
-		model.addAttribute("title", "BBSModify");
+		model.addAttribute("title", "NOTICE");
 		model.addAttribute("data", hashMap);
 		
 		return "bbs/bbsUpdate";

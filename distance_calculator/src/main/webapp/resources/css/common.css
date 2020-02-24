@@ -2,3 +2,14 @@
 .underline:hover {
     text-decoration: underline;
 }
+.tc {
+	text-align:center;
+}
+.cp {
+	cursor:pointer;
+}
+
+
+.ml10{
+	margin-left:10px;
+}

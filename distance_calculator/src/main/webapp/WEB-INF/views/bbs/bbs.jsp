@@ -5,21 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>${title} - eljamdev</title>
-<script type="text/javascript" src="/resources/js-lib/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="/resources/js/bbs.js"></script>
 </head>
 <body style="width:100%; height:100%;">
 <article>
 	<div class="container">
 		<div class="table-responsive">
-	<div style="border:1px solid black; width:80%;  margin:0 auto;">
+<%-- 	<div style="border:1px solid black; width:80%;  margin:0 auto;">
 		<div style="display:inline-block;width:10%">번호</div>
 		<div style="display:inline-block;width:58%">제목</div>
 		<div style="display:inline-block;width:19%">작성자</div>
 		<div style="display:inline-block;width:10%">조회수</div>
 	</div>
 	<br/>
-	<div style="width:80%; margin:0 auto;">
+	<div style="width:80%; margin:0 auto;" class="table">
 	<c:if test="${empty data}">
 		<div style="display:inline-block;width:100%;text-align:center;">
 			등록된 게시물이 없습니다.
@@ -32,7 +31,32 @@
 			<div style="display:inline-block;width:10%"><c:out value="${data.count}"/></div>
 		</c:forEach>
 		
-	</div>
+	</div> --%>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:if test="${empty data}">
+				<tr>
+					<td colspan="4" style="text-align:center;">등록된 게시물이 없습니다.</td>
+				</tr>
+			</c:if>
+			<c:forEach var="data" items="${data}" varStatus="status">
+				<tr>
+					<td class="underline cp"onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${(count-pagination.startList)-status.index}"/></td>
+					<td class="underline cp" onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${data.title}"/></td>
+					<td onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${data.name}"/></td>
+					<td onclick="location.href=location.pathname+'/${data.idx}'"><c:out value="${data.count}"/></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 	<br/>
 	
 	<!-- pagination{s} -->
@@ -50,14 +74,14 @@
 				<li class="page-item"><a class="page-link" href="#" onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')" >Next</a></li>
 			</c:if>
 		</ul>
-		<ul class="pagination" style="width:50%;">
+	</div>
+		<ul class="pagination" style="display:inline-block; float:right;">
 			<li class="page-item">
 				<c:if test="${not empty name}">
 					<a class="page-link" href="#" onclick="location.href= location.pathname + '/write'" style="float:right;">등록</a>
 				</c:if>
 			</li>
 		</ul>
-	</div>
 	<!-- pagination{e} -->
 	
 	<!-- search{s} -->

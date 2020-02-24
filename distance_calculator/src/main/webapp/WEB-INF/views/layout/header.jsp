@@ -12,41 +12,68 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/resources/js/main.js"></script>
 	<script data-ad-client="ca-pub-2773802897897850" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body style="width:100%; margin-bottom:10px;">
-	<div style="margin:0 auto; width:90%; height:10%; background-color:black;">
- 	<div style="margin:0 auto; color:white;">
-		<div class="menu" data="" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
-			<span style="display:table-cell;text-align:center;vertical-align:middle;">HOME</span>
+	<nav class="navbar navbar-expand-sm bg-light">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/">HOME</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/bbs">NOTICE</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/devOps">Study</a>
+			</li>
+			<c:choose>
+			    <c:when test="${not empty name}">
+			        <li class="nav-item">
+			        	<a class="nav-link" href="#" onclick="ajaxLogout()">LOGOUT</a>
+					</li>
+			    </c:when>
+			    <c:otherwise>
+					 <li class="nav-item">
+			        	<a class="nav-link" href="#" onclick="loginPopup()">LOGIN</a>
+					</li>
+			    </c:otherwise>                  
+			</c:choose>
+			
+		</ul>
+	</nav>
+<%-- 	<div style="margin:0 auto; width:90%; height:10%; background-color:black;">
+	 	<div style="margin:0 auto; color:white;">
+			<div class="menu" data="" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
+				<span style="display:table-cell;text-align:center;vertical-align:middle;">HOME</span>
+			</div>
+			<div class="menu" data="bbs" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
+				<span style="display:table-cell;text-align:center;vertical-align:middle;">bbs</span>
+			</div>
+			<div class="menu" data="devOps" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
+				<span style="display:table-cell;text-align:center;vertical-align:middle;">DevOps</span>
+			</div>
+			<div class="menu" data="github" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
+				<span style="display:table-cell;text-align:center;vertical-align:middle;">github</span>
+			</div>
+			<div class="menu" data="jenkins" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
+				<span style="display:table-cell;text-align:center;vertical-align:middle;">jenkins</span>
+			</div>
+			<c:choose>
+			    <c:when test="${not empty name}">
+			        <div class="menu" data="" style="float:right; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
+						<span style="display:table-cell;text-align:center;vertical-align:middle;" onclick="ajaxLogout()">LOGOUT</span>
+					</div> 
+			    </c:when>
+			    <c:otherwise>
+					<div class="menu" data="login" style="float:right; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
+						<span style="display:table-cell;text-align:center;vertical-align:middle;">LOGIN</span>
+					</div>
+			    </c:otherwise>                  
+			</c:choose> 
 		</div>
-		<div class="menu" data="bbs" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
-			<span style="display:table-cell;text-align:center;vertical-align:middle;">bbs</span>
-		</div>
-		<div class="menu" data="devOps" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
-			<span style="display:table-cell;text-align:center;vertical-align:middle;">DevOps</span>
-		</div>
-		<div class="menu" data="github" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
-			<span style="display:table-cell;text-align:center;vertical-align:middle;">github</span>
-		</div>
-		<div class="menu" data="jenkins" style="float:left; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
-			<span style="display:table-cell;text-align:center;vertical-align:middle;">jenkins</span>
-		</div>
-		<c:choose>
-		    <c:when test="${not empty name}">
-		        <div class="menu" data="" style="float:right; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
-					<span style="display:table-cell;text-align:center;vertical-align:middle;" onclick="ajaxLogout()">LOGOUT</span>
-				</div> 
-		    </c:when>
-		    <c:otherwise>
-				<div class="menu" data="login" style="float:right; width:10%; height:100%; padding:1px; border:1px solid white;display:table;cursor:pointer;">
-					<span style="display:table-cell;text-align:center;vertical-align:middle;">LOGIN</span>
-				</div>
-		    </c:otherwise>                  
-		</c:choose> 
-	</div>
-</div>
+	</div>--%>
 </body>
 <div style="width:100%; margin-bottom:5%;">
 </div>
