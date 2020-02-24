@@ -1,6 +1,6 @@
 $(function(){
 	
-	$(document).on("click",".menu",function(e){ 
+/*	$(document).on("click",".menu",function(e){ 
 		e.preventDefault();
 		
 		var idx = $(this).attr("data");
@@ -16,13 +16,19 @@ $(function(){
 		}else{
 			location.href="/"+idx;
 		}
-	});
+	});*/
 	
 	$(".login").keydown(function(e){ 
         if(e.keyCode == 13){
         	ajaxLogin2();
         }
     });
+	
+	$(".navbar-toggler").click(function(e){
+		e.preventDefault();
+		
+		$(".navbar-collapse").addClass("show");
+	});
 });
 
 function loginPopup(){
