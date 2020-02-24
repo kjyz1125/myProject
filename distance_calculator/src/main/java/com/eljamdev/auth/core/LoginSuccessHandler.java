@@ -26,7 +26,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth)
 			throws IOException, ServletException {
 
-		System.out.println("*****************login success*****************");
+		//System.out.println("*****************login success*****************");
 
 		ObjectMapper om = new ObjectMapper();
 
@@ -36,11 +36,11 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
 		User member = (User) auth.getPrincipal();
 		
-		System.out.println(auth.getCredentials());
+		//System.out.println(auth.getCredentials());
 
 		map.put("member", member);
 
-		System.out.println("auth::" + auth.getAuthorities());
+		//System.out.println("auth::" + auth.getAuthorities());
 
 		HttpSession session = request.getSession(true);
 
@@ -52,7 +52,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
 		String jsonString = om.writeValueAsString(map);
 		
-		System.out.println(jsonString);
+		//System.out.println(jsonString);
 		
 		OutputStream out = response.getOutputStream();
 		out.write(jsonString.getBytes());

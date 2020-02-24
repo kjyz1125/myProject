@@ -95,7 +95,9 @@ function ajaxLogout(){
 			url: '/logout',
 			async:false,
 			success : function(data) {
+				location.href="/";
 		    },error : function(data){
+		    	location.href="/";
 		    }
 		});
 	}else{

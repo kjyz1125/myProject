@@ -36,9 +36,11 @@
 					<a class="nav-link" href="/devOps">STUDY</a>
 				</li>
 				<c:choose>
-				    <c:when test="${not empty name}">	w
+				    <c:when test="${not empty name}">
 				        <li class="nav-item">
-				        	<a class="nav-link" href="#" onclick="ajaxLogout()">LOGOUT</a>
+				        	<div class="text-center">
+				        		<a class="nav-link" href="#" onclick="ajaxLogout()">LOGOUT</a>
+							</div>
 						</li>
 				    </c:when>
 				    <c:otherwise>
