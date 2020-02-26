@@ -39,7 +39,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int insertMember(HashMap<String, String> map) {
+	public int insertMember(HashMap<String, Object> map) {
 		
 		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
 		
@@ -47,7 +47,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		PasswordEncoding encoder = new PasswordEncoding();
 	
-		String decodedPassword = map.get("password");
+		String decodedPassword = (String) map.get("password");
 		
 		String encodedPassword = encoder.encode(decodedPassword);
 		

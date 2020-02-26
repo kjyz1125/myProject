@@ -56,17 +56,6 @@
 </body>
 <div style="margin-bottom:5%;">
 </div>
-<%-- <div id="loginPopup" style="position:absolute;width:20%;top:11%;left:75%;z-index:999;display:none; margin:0 auto;">
-	<form id="loginForm2" style="background-color:black;">
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		<label class="" for="exampleInputPassword2">EMAIL</label>
-		<input type="text" class="form-control login" id="loginId" placeholder="Enter id" name="id">
-		<label class="" for="exampleInputPassword2" style="margin-top:10px;">Password</label>
-		<input type="password" class="form-control login"	id="loginPWD" placeholder="Password" name="password">
-		<button type="button" class="btn btn-default pull-right" style="margin-top:10px; color:white;" value="Login" onclick="ajaxLogin2()">로그인</button>
-		<button type="button" class="btn btn-default pull-right" style="margin-top:10px; color:white;" value="Join" onclick="location.href='/join'">회원가입</button>
-	</form> 
-</div> --%>
 <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -74,20 +63,19 @@
         <h4 class="modal-title w-100 font-weight-bold">LOGIN</h4>
       </div>
       <form id="loginForm2">
-      	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	      <div class="modal-body mx-3">
 	        <div class="md-form mb-5">
 	          <i class="fas fa-envelope prefix grey-text"></i>
-	          <input type="text" id="loginId" placeholder="Enter id" name="id" class="form-control validate">
+	          <input type="text" id="loginId" placeholder="Enter id" name="id" class="login form-control validate">
 	        </div>
 	        <div class="md-form mb-4">
 	          <i class="fas fa-lock prefix grey-text"></i>
-	          <input type="password" id="defaultForm-pass"  id="loginPWD" placeholder="Password" name="password" class="form-control validate">
+	          <input type="password" id="defaultForm-pass"  id="loginPWD" placeholder="Password" name="password" class="login form-control validate">
 	        </div>
 	      </div>
 	      <div class="modal-footer d-flex justify-content-center">
-	        <button class="btn btn-default" onclick="ajaxLogin2()">Login</button>
-	        <button class="btn btn-default" value="Join" onclick="location.href='/join'">회원가입</button>
+	        <a class="btn btn-default" href="#" onclick="ajaxLogin()">Sign in</a>
+	        <a class="btn btn-default main" href="/join">Sign up</a>
 	      </div>
       </form>
     </div>

@@ -10,19 +10,21 @@
     <title>JOIN - eljamdev</title>
 </head>
 <body style="width:100%; height:100%;">
-	<div id="join" style="background-color:black;z-index:9999; width:50%;  margin:0 auto;">
+
+
+	<div id="join" class="form" style="width:50%; margin:0 auto;">
+	
+	회원 가입
 	<form id="joinForm">
-		<label class="" for="exampleInputPassword2">ID</label>
-		<input type="text" class="form-control" id="joinId" placeholder="Enter id" name="id">
-		<label class="" for="exampleInputPassword2" style="margin-top:10px;">Password</label>
-		<input type="password" class="form-control"	id="joinPWD" placeholder="Enter Password" name="password">
-		<label class="" for="exampleInputPassword2">NAME</label>
-		<input type="text" class="form-control" id="joinName" placeholder="Enter name" name="name">
-		<label class="" for="exampleInputPassword2" style="margin-top:10px;">PHONE</label>
-		<input type="text" class="form-control"	id="joinPhone" placeholder="Enter phone number" name="phone">
-		<label class="" for="exampleInputPassword2" style="margin-top:10px;">EMAIL</label>
-		<input type="text" class="form-control"	id="joinEmail" placeholder="Enter email" name="email">
-		<button type="button" class="btn btn-default pull-right" style="margin-top:10px; color:white;" value="join" onclick="ajaxJoin()">회원가입</button>
+		<label class="mt10" for="exampleInputPassword2">ID (공백없이 4~11자리 '_' 이외 특수문자 불가)</label>
+		<input type="text" class="mt10 form-control" id="joinId" placeholder="Enter id" name="id" required>
+		<label class="mt10" for="exampleInputPassword2">Password (공백없이 8~20자리 영문,숫자,특수문자포함 필수)</label>
+		<input type="password" class="mt10 form-control" id="joinPWD" placeholder="Enter Password" name="password" required>
+		<label class="mt10" for="exampleInputPassword2">NAME</label>
+		<input type="text" class="mt10 form-control" id="joinName" placeholder="Enter name" name="name" required>
+		<label class="mt10" for="exampleInputPassword2" style="margin-top:10px;">EMAIL</label>
+		<input type="text" class="mt10 form-control"	id="joinEmail" placeholder="Enter email" name="email">
+		<button type="button" class="btn btn-primary" style="margin-top:10px;" value="join" onclick="ajaxJoin()">회원가입</button>
 	</form> 
 </div>
 </body>

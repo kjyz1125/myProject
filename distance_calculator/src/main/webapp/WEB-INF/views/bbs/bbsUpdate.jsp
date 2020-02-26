@@ -5,6 +5,7 @@
 <!-- include summernote css/js -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+<script type="text/javascript" src="/resources/js/bbs.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>${title} - eljamdev</title>

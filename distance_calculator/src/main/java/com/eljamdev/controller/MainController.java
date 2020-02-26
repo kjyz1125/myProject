@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.eljamdev.common.FinalStringData;
+import com.eljamdev.common.ValidationCheck;
 import com.eljamdev.service.MemberService;
 
 /**
@@ -65,14 +66,19 @@ public class MainController {
 	@ResponseBody
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
 	public String doJoin(HttpSession session
-			,@RequestParam HashMap<String,String> map
+			,@RequestParam HashMap<String,Object> map
 			,HttpServletRequest request
 			,HttpServletResponse response) throws IllegalStateException, IOException 
 	{
+		String data = "";
+		ValidationCheck vc = new ValidationCheck();
 		
-		int result = memberService.insertMember(map);
-
-		String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+		if(vc.joinValidationCheck(map)) {
+			int result = memberService.insertMember(map);
+			data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+		}else {
+			data = FinalStringData.FAILED;
+		}
 		
 		return data;
 

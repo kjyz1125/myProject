@@ -13,8 +13,17 @@
 .ml10{
 	margin-left:10px;
 }
-
+.mb10{
+	margin-bottom:10px;
+}
+.mt10{
+	margin-top:10px;
+}
 img {
   max-width: 100%;
   height: auto;
+}
+
+a.main {
+	color:#46a2e8;
 }
