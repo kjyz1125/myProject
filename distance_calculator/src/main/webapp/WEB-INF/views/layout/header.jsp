@@ -11,16 +11,15 @@
     
     <link rel="stylesheet" type="text/css" href="/resources/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap/bootstrap.min.css">
 	
 	<script type="text/javascript" src="/resources/js-lib/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="/resources/js-lib/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="/resources/js/main.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script data-ad-client="ca-pub-2773802897897850" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
 	    <div class="navbar-header">
 	    	<a class="navbar-brand" href="/">eljamdev</a>
 	    </div>
@@ -46,7 +45,7 @@
 				    <c:otherwise>
 						 <li class="nav-item">
 				        	<div class="text-center">
-							  <a class="nav-link" href="#" onclick="loginPopup()">LOGIN</a>
+							  <a href="" class="nav-link" data-toggle="modal" data-target="#modalLoginForm">LOGIN</a>
 							</div>
 						 </li>
 				    </c:otherwise>                  
@@ -55,40 +54,9 @@
 		</div>
 	</nav>
 </body>
-<!-- 						 <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-						    <form id="loginForm2">
-							      <div class="modal-header text-center">
-							        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							          <span aria-hidden="true">&times;</span>
-							        </button>
-							      </div>
-							      <div class="modal-body mx-3">
-							        <div class="md-form mb-5">
-							          <i class="fas fa-envelope prefix grey-text"></i>
-							          <input type="email" id="defaultForm-email" class="form-control validate">
-							          <label data-error="wrong" data-success="right" id="loginId" for="defaultForm-email">Your ID</label>
-							        </div>
-							
-							        <div class="md-form mb-4">
-							          <i class="fas fa-lock prefix grey-text"></i>
-							          <input type="password" id="defaultForm-pass" class="form-control validate">
-							          <label data-error="wrong" data-success="right" id="loginPWD" for="defaultForm-pass">Your password</label>
-							        </div>
-							
-							      </div>
-							      <div class="modal-footer d-flex justify-content-center">
-							        <button class="btn btn-default">Login</button>
-							      </div>
-						      </form>
-					    </div>
-					  </div>
-					</div> -->
 <div style="margin-bottom:5%;">
 </div>
-<div id="loginPopup" style="position:absolute;width:20%;top:11%;left:75%;z-index:999;display:none; margin:0 auto;">
+<%-- <div id="loginPopup" style="position:absolute;width:20%;top:11%;left:75%;z-index:999;display:none; margin:0 auto;">
 	<form id="loginForm2" style="background-color:black;">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		<label class="" for="exampleInputPassword2">EMAIL</label>
@@ -98,5 +66,30 @@
 		<button type="button" class="btn btn-default pull-right" style="margin-top:10px; color:white;" value="Login" onclick="ajaxLogin2()">로그인</button>
 		<button type="button" class="btn btn-default pull-right" style="margin-top:10px; color:white;" value="Join" onclick="location.href='/join'">회원가입</button>
 	</form> 
+</div> --%>
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">LOGIN</h4>
+      </div>
+      <form id="loginForm2">
+      	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	      <div class="modal-body mx-3">
+	        <div class="md-form mb-5">
+	          <i class="fas fa-envelope prefix grey-text"></i>
+	          <input type="text" id="loginId" placeholder="Enter id" name="id" class="form-control validate">
+	        </div>
+	        <div class="md-form mb-4">
+	          <i class="fas fa-lock prefix grey-text"></i>
+	          <input type="password" id="defaultForm-pass"  id="loginPWD" placeholder="Password" name="password" class="form-control validate">
+	        </div>
+	      </div>
+	      <div class="modal-footer d-flex justify-content-center">
+	        <button class="btn btn-default" onclick="ajaxLogin2()">Login</button>
+	        <button class="btn btn-default" value="Join" onclick="location.href='/join'">회원가입</button>
+	      </div>
+      </form>
+    </div>
+  </div>
 </div>
-

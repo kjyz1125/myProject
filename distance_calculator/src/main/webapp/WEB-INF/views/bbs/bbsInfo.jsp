@@ -8,7 +8,7 @@
 <title>${title} - eljamdev</title>
 </head>
 <body style="width:100%; height:100%;">
-	<div style="width:80%; height:10%; margin:0 auto;">
+	<div style="width:80%; height:20%; margin:0 auto;">
 		<h1>
 			<c:out value="${data.title}"/>
 		</h1>
@@ -20,8 +20,8 @@
 	<div style="width:80%; height:auto; margin:0 auto;">
 		<c:if test="${not empty name}">
 			<c:if test="${name eq data.name}">
-				<div class="btn btn-danger cp ml10" id="delete" style="cursor:pointer;display:inline-block;float:right;width:10%">삭제</div>
-				<div class="btn btn-primary cp" onclick="javascript:location.href='/bbs/${data.idx}/update'" style="cursor:pointer;display:inline-block;float:right;width:10%">수정</div>
+				<div class="btn btn-danger cp ml10" id="delete" style="display:inline-block;float:right;width:20%; max-width:80px;">삭제</div>
+				<div class="btn btn-primary cp" onclick="javascript:location.href='/bbs/${data.idx}/update'" style="display:inline-block;float:right;width:20%; max-width:80px;">수정</div>
 			</c:if>
 		</c:if>
 	</div>

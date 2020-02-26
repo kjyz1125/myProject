@@ -35,7 +35,7 @@
 			<textarea  id="summernote" name="contents" placeholder="내용" style="width:100%;height:80%">
 				${data.contents}
 			</textarea>
-			<div id="update" style="border:1px solid black;cursor:pointer;display:inline-block;float:right;width:10%">수정</div>
+			<div class="btn btn-warning cp" id="update" style="display:inline-block;float:right;width:20%; max-width:80px;">수정</div>
 			<div style="display:none;">
 				<input type="text" name="idx" readonly="readonly" value="${data.idx}">
 			</div>

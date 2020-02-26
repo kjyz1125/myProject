@@ -24,11 +24,11 @@ $(function(){
         }
     });
 	
-	$(".navbar-toggler").click(function(e){
+/*	$(".navbar-toggler").click(function(e){
 		e.preventDefault();
 		
 		$(".navbar-collapse").addClass("show");
-	});
+	});*/
 });
 
 function loginPopup(){
