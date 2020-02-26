@@ -2,7 +2,30 @@ $(function(){
 	
 });
 
-function chkPwd(str){
+function validationCheck(form){
+	
+	var result = false;
+	var data;
+	
+	data.id = form.find("#joinId").val();
+	data.name = form.find("#joinName").val();
+	data.email = form.find("#joinEmail").val();
+	
+	if(data.id == ""){
+		alert("아이디를 입력해주세요.");
+	}
+	
+	if(data.name == ""){
+		alert("이름을 입력해주세요.");
+	}
+
+	if(data.email == ""){
+		alert("이메일을 입력해주세요.");
+	}
+	
+}
+
+function chk(str){
 
     var pw = str;
     var num = pw.search(/[0-9]/g);
@@ -35,8 +58,13 @@ function chkPwd(str){
 
 function ajaxJoin(){
 	
+	var result;
 	
-	var result = chkPwd($("#joinForm").find("#joinPWD").val());
+	if(validationCheck($("#joinForm"))){
+		result  = chkPwd($("#joinForm").find("#joinPWD").val());
+	}else{
+		result = false;
+	}
 	
 	if(!result){
 		return;

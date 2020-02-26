@@ -11,20 +11,14 @@ public class ValidationCheck {
 	private static final Logger logger = LoggerFactory.getLogger(ValidationCheck.class);
 
 	public boolean joinValidationCheck(HashMap<String,Object> hashMap) {
-		
-		String id ="";
-		String email="";
 				
 		boolean result = false;
-		
-		id = (String) hashMap.get("id");
-		email = (String) hashMap.get("email");
-		
+	
 		try {
-			if(Pattern.compile(FinalStringData.COMMON_REGEX).matcher(id).matches()){
-				if(!email.equals("")) {
-					result = Pattern.compile(FinalStringData.EMAIL_REGEX).matcher(email).matches();
-				}
+			
+			if(Pattern.compile(FinalStringData.COMMON_REGEX).matcher((String) hashMap.get("id")).matches()
+				&& Pattern.compile(FinalStringData.EMAIL_REGEX).matcher((String) hashMap.get("email")).matches()){
+				result = true;
 			}else {
 				result = false;
 			}

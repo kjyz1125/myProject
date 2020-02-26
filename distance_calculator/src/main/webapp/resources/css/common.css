@@ -19,9 +19,16 @@
 .mt10{
 	margin-top:10px;
 }
+
 img {
   max-width: 100%;
   height: auto;
+}
+
+.toe{
+	text-overflow:ellipsis; 
+	overflow:hidden;
+	white-space:nowrap;
 }
 
 a.main {

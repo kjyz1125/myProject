@@ -8,6 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.eljamdev.common.FinalStringData;
+
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,16 +34,16 @@ public class User implements UserDetails{
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();    
-        String str= getRole();        // Role이 ADMIN일 경우 ROLE_ADMIN 권한 부여 
+        String permission = getRole();        // Role이 ADMIN일 경우 ROLE_ADMIN 권한 부여 
        
-       if(str!=""&&str!=null){
-    	   if(str.equals("ROLE_ADMIN")){
-        	   authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+       if(permission != "" && permission != null){
+    	   if(permission.equals(FinalStringData.ROLE_ADMIN)){
+        	   authorities.add(new SimpleGrantedAuthority(FinalStringData.ROLE_ADMIN));
            }else {
-        	   authorities.add(new SimpleGrantedAuthority("ROLE_USER")); 
+        	   authorities.add(new SimpleGrantedAuthority(FinalStringData.ROLE_USER)); 
            }
        }else{
-    	   authorities.add(new SimpleGrantedAuthority("ROLE_USER")); // 아닐경우 일반유저 권한 부여
+    	   authorities.add(new SimpleGrantedAuthority(FinalStringData.ROLE_USER)); // 아닐경우 일반유저 권한 부여
        }
         
         return authorities;

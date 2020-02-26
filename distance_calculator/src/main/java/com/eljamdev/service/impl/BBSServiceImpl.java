@@ -83,4 +83,16 @@ public class BBSServiceImpl implements BBSService {
 		return bbsMapper.getBBSCnt(search);
 	}
 
+	@Override
+	public ArrayList<HashMap<String, Object>> getHigestBBS() {
+
+		ArrayList<HashMap<String, Object>> list = new ArrayList<>();		
+		
+		BBSMapper bbsMapper = sqlSession.getMapper(BBSMapper.class);
+		
+		list.addAll(bbsMapper.getHighestBBS());
+		
+		return list;
+	}
+
 }

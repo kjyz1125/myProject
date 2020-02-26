@@ -1,6 +1,7 @@
 package com.eljamdev.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.eljamdev.common.CommonMethod;
 import com.eljamdev.common.FinalStringData;
 import com.eljamdev.common.ValidationCheck;
+import com.eljamdev.service.BBSService;
 import com.eljamdev.service.MemberService;
 
 /**
@@ -30,6 +33,9 @@ public class MainController {
 	
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private BBSService bbsService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	/**
@@ -37,8 +43,22 @@ public class MainController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main(Locale locale, Model model) {
+		
+		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+		
+		list.addAll(bbsService.getHigestBBS());
+		
+		model.addAttribute("list", list);
 
 		return "/main";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) {
+		
+		//model.addAttribute("returnUrl", CommonMethod.getReturnUrl(request, response));
+		
+		return "/login";
 	}
 	
 	

@@ -17,11 +17,7 @@ public class UserService implements UserDetailsService{
 
 	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException{
 
-        System.out.println(id);
-
         User userInfo = new User();
-        
-        PasswordEncoding encode = new PasswordEncoding();
         
         userInfo = memberService.getMember(id);
 

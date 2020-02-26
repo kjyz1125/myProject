@@ -2,9 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.js"></script>
 <script type="text/javascript" src="/resources/js/bbs.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>${title} - eljamdev</title>
@@ -18,13 +18,12 @@
 			</br>
 			<textarea  id="summernote" name="contents" placeholder="내용" style="width:100%;height:80%"></textarea>
 			</br>
-			<div id="write" style="text-align:center;border:1px solid black;float:right;cursor:pointer;">
+			<div id="write" class="btn btn-primary" style="float:right;">
 				등록
 			</div>
 		</form>
 	</div>
-</body>
-<script>
+	<script>
 	$(document).ready(function() {
 		  $('#summernote').summernote({
 			  placeholder: 'write your contents',
@@ -32,10 +31,9 @@
 		        height: 200,
 		        minHeight: 200,
 		        maxHeight: 500,
-		        focus: true
+		        focus: false
 		  });
-		  
-		  
 	});
 </script>
+</body>
 </html>
