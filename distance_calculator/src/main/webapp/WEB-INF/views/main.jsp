@@ -5,7 +5,7 @@
     <title>MAIN - eljamdev</title>
 </head>
 <body style="width:100%">
-	<div class="row" style="position:absolute; width:80%; left:0;right:0; margin:0 auto; padding:40px">
+	<div class="row" style="position:absolute; width:80%; left:0;right:0; margin:0 auto; padding:10%">
 		<c:forEach var="data" items="${list}" varStatus="status">
 		<div style="padding:5px;">
 			<div class="card" style="width: 17rem; padding:10px;">
