@@ -1,9 +1,12 @@
 package com.eljamdev.controller;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,12 +15,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.eljamdev.common.CommonMethod;
 import com.eljamdev.common.FinalStringData;
 import com.eljamdev.common.Search;
 import com.eljamdev.service.BBSService;
@@ -31,6 +37,8 @@ public class BBSController {
 	
 	@Autowired
 	private BBSService bbsService;
+	@Resource(name="uploadPath")
+    String uploadPath;
 	
 	private static final Logger logger = LoggerFactory.getLogger(BBSController.class);
 
@@ -96,17 +104,29 @@ public class BBSController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/bbs/write.do", method = RequestMethod.POST)
-	public String bbsWriteDo(HttpServletRequest request, @RequestParam HashMap<String, Object> map, Model model) {
+	public String bbsWriteDo(HttpServletRequest request, @RequestParam HashMap<String, Object> map, Model model, MultipartFile file) throws Exception {
 		
 		int result = 0;
 		String data = "";
+		CommonMethod cm = new CommonMethod();
 		HttpSession session = request.getSession(true);
+		
+		
 		
 		map.put("id"  , session.getAttribute("id"));
 		map.put("name"  , session.getAttribute("name"));
 		map.put("category", FinalStringData.BBS_CATEGORY);
 		
 		result = bbsService.insertBBS(map);
+
+		if(file!=null && result == 1) {
+			map.put("uuid_file_name" , cm.uploadFile(file.getOriginalFilename(), file.getBytes(), uploadPath));
+			map.put("real_file_name" , file.getOriginalFilename());
+			map.put("file_path" , uploadPath);
+			map.put("file_size" , file.getSize());		
+			result = bbsService.insertBBSFile(map);
+		}
+		
 		data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
 		
 		return data;

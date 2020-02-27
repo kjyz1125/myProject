@@ -17,22 +17,19 @@ $(function() {
 			    }
 			});
 			
-			
-			var param = $("#writeForm").serialize();
-			
-			$.ajax({
+			$('#writeForm').ajaxSubmit({
 				url: './write.do',
-		        type: 'POST',
-		        data: param,
-		        success: function (result) {
-		        	if(result == "SUCCESS"){
+				processData: false,
+				contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+				type: 'POST',
+				success: function (result) {
+					if(result == "SUCCESS"){
 		            	window.location.href = "/"+location.pathname.split("/")[1];
 		            }else{
 		            	alert("실패");
 		            	window.location.href = "/"+location.pathname.split("/")[1];
 		            }
-		        },
-		        error: function(XMLHttpResponse){
+				},error: function(XMLHttpResponse){
 		        	alert('ERROR');
 		        }
 			});

@@ -19,4 +19,5 @@ public interface BBSService {
 	public void updateBBSCount(int idx);
 	public int getBBSCnt(Search search);
 	public ArrayList<HashMap<String, Object>> getHigestBBS();
+	public int insertBBSFile(HashMap<String, Object> map);
 }

@@ -46,7 +46,17 @@
 	</select>
 	
 	<select id="getBBSInfo" parameterType="int" resultType="HashMap">
-		select idx, title, CONVERT(contents USING utf8) as contents, name, id from bbs where idx = #{idx}
+		SELECT 
+			a.idx 
+			,a.title
+			,CONVERT(a.contents USING utf8) AS contents
+			,a.name 
+			,a.id
+			,b.uuid_file_name
+			,b.real_file_name
+			,b.file_path
+		FROM bbs a LEFT JOIN bbs_file b ON a.idx = b.idx
+		WHERE a.idx = #{idx}
 	</select>
 	
 	<select id="getBBSCnt" resultType="int">
@@ -70,9 +80,19 @@
 	      </if>
 	</select>
 	
-	<update id="insertBBS" parameterType="HashMap">
-		insert into bbs (title, contents, name, regdate, useyn, category, id) values (#{title}, #{contents}, #{name}, NOW(), 'Y', #{category}, #{id})
-	</update>
+	<insert id="insertBBS" parameterType="HashMap" useGeneratedKeys="true" keyProperty="idx">
+		insert into bbs 
+		(title, contents, name, regdate, useyn, category, id) 
+		values 
+		(#{title}, #{contents}, #{name}, NOW(), 'Y', #{category}, #{id})
+	</insert>
+	
+	<insert id="insertBBSFile" parameterType="HashMap">
+		insert into bbs_file 
+		(idx, uuid_file_name, real_file_name, file_path, file_size, writer, regdate) 
+		values 
+		(#{idx}, #{uuid_file_name}, #{real_file_name}, #{file_path}, #{file_size}, #{id}, NOW())
+	</insert>
 	
 	<update id="deleteBBS" parameterType="HashMap">
 		update bbs set useyn = 'N' where idx = #{idx} 

@@ -95,4 +95,12 @@ public class BBSServiceImpl implements BBSService {
 		return list;
 	}
 
+	@Override
+	public int insertBBSFile(HashMap<String, Object> map) {
+		
+		BBSMapper bbsMapper = sqlSession.getMapper(BBSMapper.class);
+		
+		return bbsMapper.insertBBSFile(map);
+	}
+
 }

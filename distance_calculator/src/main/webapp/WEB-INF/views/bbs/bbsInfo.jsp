@@ -14,8 +14,12 @@
 		</h1>
 	</div>
 	</br>
-	<div style="width:80%; margin:0 auto;">
+	<div style="width:80%; min-height:30%; margin:0 auto;">
 		${data.contents}
+	</div>
+
+	<div style="width:80%; height:10%; margin:0 auto;">
+		파일 : ${data.real_file_name}
 	</div>
 	<div style="width:80%; height:auto; margin:0 auto;">
 		<c:if test="${not empty name}">

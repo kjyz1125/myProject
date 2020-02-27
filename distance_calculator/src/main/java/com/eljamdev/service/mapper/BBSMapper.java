@@ -20,4 +20,5 @@ public interface BBSMapper {
 	public void updateBBSCount(int idx);
 	public int getBBSCnt(Search search);
 	public ArrayList<HashMap<String, Object>> getHighestBBS();
+	public int insertBBSFile(HashMap<String, Object> map);
 }
