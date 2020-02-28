@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,6 +42,8 @@ public class MainController {
 	private MemberService memberService;
 	@Autowired
 	private BBSService bbsService;
+	@Resource(name="uploadPath")
+    String uploadPath;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
@@ -53,6 +56,8 @@ public class MainController {
 		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
 		
 		list.addAll(bbsService.getHighestBBS());
+		
+		System.out.println(uploadPath);
 		
 		model.addAttribute("list", list);
 
