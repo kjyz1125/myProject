@@ -61,7 +61,7 @@
 	<br/>
 	
 	<!-- pagination{s} -->
-	<div id="paginationBox" style="width:80%; margin:0 auto;">
+	<div id="paginationBox" class="row justify-content-center" style="width:80%; margin:0 auto;">
 		<ul class="pagination" style="width:50%;">
 			<c:if test="${pagination.prev}">
 				<li class="page-item"><a class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
@@ -76,17 +76,10 @@
 			</c:if>
 		</ul>
 	</div>
-		<ul class="pagination" style="display:inline-block; float:right;">
-			<li class="page-item">
-				<c:if test="${not empty name}">
-					<a class="page-link" href="#" onclick="location.href= location.pathname + '/write'" style="float:right;">등록</a>
-				</c:if>
-			</li>
-		</ul>
 	<!-- pagination{e} -->
 	
 	<!-- search{s} -->
-	<div class="form-group row justify-content-center" style="width:80%; margin:0 auto;">
+	<div class="form-group row justify-content-center" style="width:90%; margin:0 auto;">
 		<div class="w100" style="padding-right:10px">
 			<select class="form-control form-control-sm" name="searchType" id="searchType">
 				<option value="title">제목</option>
@@ -102,6 +95,15 @@
 		</div>
 	</div>
 		<!-- search{e} -->
+	</div>
+	<div class="mt10">
+		<ul class="pagination" style="display:inline-block; float:right;">
+			<li class="page-item">
+				<c:if test="${not empty name}">
+					<a class="page-link" href="#" onclick="location.href= location.pathname + '/write'" style="float:right;">등록</a>
+				</c:if>
+			</li>
+		</ul>
 	</div>
 	</div>
 	</article>

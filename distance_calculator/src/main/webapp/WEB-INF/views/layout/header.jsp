@@ -31,9 +31,15 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/bbs">NOTICE</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/devOps">STUDY</a>
-				</li>
+				<li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          STUDY
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+			          <a class="dropdown-item" href="/spring">JAVA / Spring</a>
+			          <a class="dropdown-item" href="/devOps">DevOps</a>
+			        </div>
+     			 </li>
 				<c:choose>
 				    <c:when test="${not empty name}">
 				        <li class="nav-item">

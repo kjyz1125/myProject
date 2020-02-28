@@ -19,6 +19,7 @@
 		${data.contents}
 	</div>
 
+	<c:if test="${not empty data.real_file_name}">
 	<div style="width:80%; height:10%; margin:0 auto;">
 		<form method="GET" id="downloadForm" action="/fileDownload.do">
 			파일 : <span class="cp underline" onclick="fileDownload()">${data.real_file_name}</span>
@@ -26,6 +27,7 @@
 			<input type="hidden" name="idx" value="${data.idx}"/>
 		</form>
 	</div>
+	</c:if>
 	<div style="width:80%; height:auto; margin:0 auto;">
 		<c:if test="${not empty name}">
 			<c:if test="${name eq data.name}">

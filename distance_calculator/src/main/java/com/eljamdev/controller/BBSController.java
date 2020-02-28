@@ -1,8 +1,6 @@
 package com.eljamdev.controller;
 
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -68,7 +65,7 @@ public class BBSController {
 		
 		list.addAll(bbsService.getBBS(search));
 		
-		model.addAttribute("title", "NOTICE");
+		model.addAttribute("title", FinalStringData.BBS_TITLE);
 		model.addAttribute("pagination", search);
 		model.addAttribute("data", list);
 		model.addAttribute("count", listCnt);
@@ -85,7 +82,7 @@ public class BBSController {
 		
 		hashMap = bbsService.getBBSInfo(idx);
 		
-		model.addAttribute("title", "NOTICE");
+		model.addAttribute("title", FinalStringData.BBS_TITLE);
 		model.addAttribute("data", hashMap);
 		
 		return "bbs/bbsInfo"; 
@@ -96,7 +93,7 @@ public class BBSController {
 		
 		HashMap<String, String> hashMap = new HashMap<>();
 		
-		model.addAttribute("title", "NOTICE");
+		model.addAttribute("title", FinalStringData.BBS_TITLE);
 		model.addAttribute("data", hashMap);
 		
 		return "bbs/bbsWrite";
@@ -167,7 +164,7 @@ public class BBSController {
 		session.setAttribute("id", request.getSession().getAttribute("id"));
 		hashMap = bbsService.getBBSInfo(idx);
 		
-		model.addAttribute("title", "NOTICE");
+		model.addAttribute("title", FinalStringData.BBS_TITLE);
 		model.addAttribute("data", hashMap);
 		
 		return "bbs/bbsUpdate";
@@ -219,7 +216,7 @@ public class BBSController {
 		search.pageInfo(page, range, listCnt);
 		list.addAll(bbsService.getBBS(search));
 		
-		model.addAttribute("title", "DevOps");
+		model.addAttribute("title", FinalStringData.DEVOPS_TITLE);
 		model.addAttribute("pagination", search);
 		model.addAttribute("data", list);
 		model.addAttribute("count", listCnt);
@@ -236,7 +233,7 @@ public class BBSController {
 		
 		hashMap = bbsService.getBBSInfo(idx);
 		
-		model.addAttribute("title", "DevOpsInfo");
+		model.addAttribute("title", FinalStringData.DEVOPS_TITLE);
 		model.addAttribute("data", hashMap);
 		
 		return "bbs/bbsInfo"; 
@@ -247,7 +244,7 @@ public class BBSController {
 		
 		HashMap<String, String> hashMap = new HashMap<>();
 		
-		model.addAttribute("title", "DevOpsWrite");
+		model.addAttribute("title", FinalStringData.DEVOPS_TITLE);
 		model.addAttribute("data", hashMap);
 		
 		return "bbs/bbsWrite";
@@ -265,7 +262,8 @@ public class BBSController {
 		map.put("name"  , session.getAttribute("name"));
 		map.put("category", FinalStringData.DEVOPS_CATEGORY);
 		
-		result = bbsService.insertBBS(map);
+		// result = bbsService.insertBBS(map);
+		
 		data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
 		
 		return data;
@@ -302,7 +300,7 @@ public class BBSController {
 		
 		hashMap = bbsService.getBBSInfo(idx);
 		
-		model.addAttribute("title", "DevOpsModify");
+		model.addAttribute("title", FinalStringData.DEVOPS_TITLE);
 		model.addAttribute("data", hashMap);
 		
 		return "bbs/bbsUpdate";
@@ -312,6 +310,158 @@ public class BBSController {
 	@RequestMapping(value = "/devOps/{idx}/update.do", method = RequestMethod.POST)
 	public String devOpsUpdateDo(HttpServletRequest request, @PathVariable int idx, @RequestParam HashMap<String, Object> map, Model model) {
 		
+		int result = 0;
+		String id = "";
+		HashMap<String, Object> hashMap = new HashMap<>();
+		HttpSession session = request.getSession(true);
+		
+		hashMap = bbsService.getBBSInfo(idx);
+		id = (String) hashMap.get("id");
+		
+		if(session.getAttribute("id").equals(id)) {	
+			result = bbsService.updateBBS(map);
+			String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+			return data;
+		}else{	
+			String data = FinalStringData.FAILED;
+			return data;
+		}	
+	}
+	
+	
+	
+	@RequestMapping(value = "/spring", method = RequestMethod.GET)
+	public String spring(
+			 @RequestParam(required = false, defaultValue = "1") int page
+			,@RequestParam(required = false, defaultValue = "1") int range
+			,@RequestParam(required = false, defaultValue = "title") String searchType
+			,@RequestParam(required = false, defaultValue = "S") String category
+			,@RequestParam(required = false) String keyword
+			,Model model) 
+	{
+		
+		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+		Search search = new Search();
+
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
+		search.setCategory(category);
+		
+		int listCnt = bbsService.getBBSCnt(search);
+		
+		search.pageInfo(page, range, listCnt);
+		
+		list.addAll(bbsService.getBBS(search));
+		
+		model.addAttribute("title", FinalStringData.SPRING_TITLE);
+		model.addAttribute("pagination", search);
+		model.addAttribute("data", list);
+		model.addAttribute("count", listCnt);
+		
+		return "bbs/bbs";
+	}
+	
+	@RequestMapping(value = "/spring/{idx}", method = RequestMethod.GET)
+	public String springInfo(HttpServletRequest request, @PathVariable int idx, Model model) {
+		
+		HashMap<String, Object> hashMap = new HashMap<>();
+		
+		bbsService.updateBBSCount(idx);
+		
+		hashMap = bbsService.getBBSInfo(idx);
+		
+		model.addAttribute("title", FinalStringData.SPRING_TITLE);
+		model.addAttribute("data", hashMap);
+		
+		return "bbs/bbsInfo"; 
+	}
+
+	@RequestMapping(value = "/spring/write", method = RequestMethod.GET)
+	public String springWrite(Model model) {
+		
+		HashMap<String, String> hashMap = new HashMap<>();
+		
+		model.addAttribute("title", FinalStringData.SPRING_TITLE);
+		model.addAttribute("data", hashMap);
+		
+		return "bbs/bbsWrite";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/spring/write.do", method = RequestMethod.POST)
+	public String springWriteDo(HttpServletRequest request, @RequestParam HashMap<String, Object> map, Model model, MultipartFile file) throws Exception {
+		
+		int result = 0;
+		String data = "";
+		CommonMethod cm = new CommonMethod();
+		HttpSession session = request.getSession(true);
+		
+		
+		
+		map.put("id"  , session.getAttribute("id"));
+		map.put("name"  , session.getAttribute("name"));
+		map.put("category", FinalStringData.SPRING_CATEGORY);
+		
+		result = bbsService.insertBBS(map);
+
+		if(file!=null && result == 1) {
+			map.put("uuid_file_name" , cm.uploadFile(file.getOriginalFilename(), file.getBytes(), uploadPath));
+			map.put("real_file_name" , file.getOriginalFilename());
+			map.put("file_path" , uploadPath);
+			map.put("file_size" , file.getSize());		
+			result = bbsService.insertBBSFile(map);
+		}
+		
+		data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+		
+		return data;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/spring/delete.do", method = RequestMethod.POST)
+	public String springDelete(HttpServletRequest request, @RequestParam("idx") int idx, Model model) {
+		
+		int result = 0;
+		String id = "";
+		HashMap<String, Object> hashMap = new HashMap<>();
+		HttpSession session = request.getSession(true);
+		
+		hashMap = bbsService.getBBSInfo(idx);
+		id = (String) hashMap.get("id");
+		
+		if(session.getAttribute("id").equals(id)) {	
+			result = bbsService.deleteBBS(idx);
+			String data = result > 0 ? FinalStringData.SUCCESS:FinalStringData.FAILED;
+			return data;
+		}else{
+			
+			String data = FinalStringData.FAILED;
+			return data;
+		}
+		
+		
+	}
+
+	
+	@RequestMapping(value = "/spring/{idx}/update", method = RequestMethod.GET)
+	public String springUpdate(HttpServletRequest request, @PathVariable int idx, Model model) {
+		
+		HashMap<String, Object> hashMap = new HashMap<>();
+		HttpSession session = request.getSession(true);
+		
+		session.setAttribute("id", request.getSession().getAttribute("id"));
+		hashMap = bbsService.getBBSInfo(idx);
+		
+		model.addAttribute("title", FinalStringData.SPRING_TITLE);
+		model.addAttribute("data", hashMap);
+		
+		return "bbs/bbsUpdate";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/spring/{idx}/update.do", method = RequestMethod.POST)
+	public String springUpdateDo(HttpServletRequest request, @PathVariable int idx, @RequestParam HashMap<String, Object> map, Model model) {
+
 		int result = 0;
 		String id = "";
 		HashMap<String, Object> hashMap = new HashMap<>();

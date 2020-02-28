@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/error.css">
 <meta charset="UTF-8">
 <title>ERROR - eljamdev</title>
