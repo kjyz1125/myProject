@@ -11,6 +11,7 @@
 	<intercept-url pattern="/**/delete.do" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"/>
 	<intercept-url pattern="/**/join.do" access="permitAll"/>
 	<intercept-url pattern="/**/*.do" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"/>
+	<intercept-url pattern="/**/fileDownload.do" access="permitAll"/>
 	<intercept-url pattern="/**" access="permitAll"/>
 	<intercept-url pattern="/resources/**" access="permitAll" />
 	<form-login 

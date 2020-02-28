@@ -112,4 +112,16 @@
 		where idx = #{idx} 
 	</update>
 	
+	<select id="getFileDownload" resultType="HashMap">
+		SELECT 
+			uuid_file_name
+			,file_path
+			,CONCAT ( file_path, "/" , uuid_file_name) AS real_file_path
+		FROM bbs_file 
+		WHERE real_file_name = #{real_file_name}
+		<if test="idx != null">
+   			 AND idx = #{idx}
+ 		 </if>
+	</select>
+	
 </mapper>

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <script type="text/javascript" src="/resources/js/bbs.js"></script>
+<script type="text/javascript" src="/resources/js-lib/jquery.form.min.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>${title} - eljamdev</title>
@@ -19,7 +20,11 @@
 	</div>
 
 	<div style="width:80%; height:10%; margin:0 auto;">
-		파일 : ${data.real_file_name}
+		<form method="GET" id="downloadForm" action="/fileDownload.do">
+			파일 : <span class="cp underline" onclick="fileDownload()">${data.real_file_name}</span>
+			<input type="hidden" name="real_file_name" value="${data.real_file_name}"/>
+			<input type="hidden" name="idx" value="${data.idx}"/>
+		</form>
 	</div>
 	<div style="width:80%; height:auto; margin:0 auto;">
 		<c:if test="${not empty name}">

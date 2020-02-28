@@ -68,7 +68,6 @@ $(function() {
 		            	alert("실");
 		            	window.location.href = "/"+location.pathname.split("/")[1]
 		            }
-		            
 		        },
 		        error: function(XMLHttpResponse){
 		        	alert('ERROR');
@@ -130,6 +129,53 @@ $(function() {
 		location.href = param;
 	});
 });
+
+function fileDownload(){
+		
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+	
+	$.ajaxSetup({
+	     beforeSend: function(xhr) {
+	        xhr.setRequestHeader('CORS', 'Access-Control-Allow-Origin');
+	        xhr.setRequestHeader(header, token);
+	    }
+	});
+	
+	$('#downloadForm').submit();
+
+/*	$('#downloadForm').ajaxSubmit({
+		url: '/fileDownload.do',
+		processData: true,
+		//contentType: 'text/plain;charset=utf-8',
+		contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+		//dataType: 'text/html; charset=utf-8',
+		type: 'GET',
+		success:function(response) {
+			
+		},error:function(XMLHttpResponse){
+			
+		}
+	});*/
+	
+/*	$.ajax({
+		url: '/fileDownload.do',
+        type: 'POST',
+        data: param,
+        success: function (result) {
+            if(result == "SUCCESS"){
+            	window.location.href = "../"+$("input[name=idx]").val();
+            }else{
+            	alert("실패");
+            	window.location.href = location.pathname;
+            }
+            
+        },
+        error: function(XMLHttpResponse){
+        	alert('ERROR');
+        }
+	});*/
+}
 
 function fn_prev(page, range, rangeSize) {
 

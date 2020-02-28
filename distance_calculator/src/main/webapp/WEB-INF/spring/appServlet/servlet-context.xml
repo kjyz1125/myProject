@@ -28,6 +28,17 @@
 	    <beans:property name="maxInMemorySize" value="100000000" />
 	</beans:bean>
 	
+	<beans:bean id="prop" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+	  	<beans:property name="locations">
+		    <beans:list>
+		      <!-- 환경별 설정(spring.profiles.active 값은 VM 옵션으로 설정되어 있음) -->
+		      <beans:value>classpath:properties/seperate/${envType}.properties</beans:value>
+		      <!-- 공통 설정 -->
+		      <beans:value>/WEB-INF/properties/*.properties</beans:value>
+		    </beans:list>
+	 	 </beans:property>
+	</beans:bean>
+	
 	<!-- 파일업로드에 필요한 bean -->
 	<beans:bean id="mulitpartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	    <!-- 파일업로드 용량 -->
@@ -36,8 +47,7 @@
 	<!-- 파일업로드를 위한 디렉토리 설정 -->
 	<!-- String uploadPath = new String("업로드 경로") -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-	    <beans:constructor-arg value="C://resources/img"/>
-	 <!--    <beans:constructor-arg value="/resources/img"/> -->
+	    <beans:constructor-arg value="${resource.url}"/>
 	</beans:bean>
 	
 	<beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
@@ -45,6 +55,8 @@
 	</beans:bean>
 
 	<beans:bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+	
+
 	
 	
 	<mvc:annotation-driven />

@@ -84,7 +84,7 @@ public class BBSServiceImpl implements BBSService {
 	}
 
 	@Override
-	public ArrayList<HashMap<String, Object>> getHigestBBS() {
+	public ArrayList<HashMap<String, Object>> getHighestBBS() {
 
 		ArrayList<HashMap<String, Object>> list = new ArrayList<>();		
 		
@@ -101,6 +101,14 @@ public class BBSServiceImpl implements BBSService {
 		BBSMapper bbsMapper = sqlSession.getMapper(BBSMapper.class);
 		
 		return bbsMapper.insertBBSFile(map);
+	}
+
+	@Override
+	public HashMap<String, Object> getFileDownload(HashMap<String,Object> map) {
+
+		BBSMapper bbsMapper = sqlSession.getMapper(BBSMapper.class);
+		
+		return bbsMapper.getFileDownload(map);
 	}
 
 }
